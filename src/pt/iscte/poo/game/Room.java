@@ -63,16 +63,7 @@ public class Room {
 		Room r = new Room();
 		r.setName(f.getName());
 		
-		GameObject water = new Water(new Point2D(0, 0));
-		r.addObject(water);
 		
-		BigFish bf = new BigFish(new Point2D(2, 2));
-		r.setBigFish(bf);
-		r.addObject(bf);
-		
-		SmallFish sf = new SmallFish(new Point2D(3, 3));
-		r.setSmallFish(sf);
-		r.addObject(sf);
 		
 		return r;
 		
