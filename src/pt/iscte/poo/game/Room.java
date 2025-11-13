@@ -58,11 +58,12 @@ public class Room {
 	
 	public static Room readRoom(File f) {
 		
-		// TODO
+		// Temos de adicionar aqui:
+		// água no fundo(layer 0 )
+		// leitura dos objetos obtidos do ficheiro
 		
 		Room r = new Room();
 		r.setName(f.getName());
-		
 		
 		
 		return r;
