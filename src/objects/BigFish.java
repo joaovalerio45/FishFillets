@@ -6,8 +6,6 @@ public class BigFish extends GameCharacter {
 	
 	public BigFish(Point2D p) {
 		super(p);
-		return;
-		//ola
 	}
 	
 	@Override
