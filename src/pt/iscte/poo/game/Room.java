@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.TransferQueue;
 
 import objects.Water;
 import objects.Anchor;
@@ -12,7 +13,13 @@ import objects.BigFish;
 import objects.Bomb;
 import objects.Cup;
 import objects.GameObject;
+import objects.HoledWall;
+import objects.HorizontalSteel;
 import objects.SmallFish;
+import objects.Stone;
+import objects.Trap;
+import objects.Trunk;
+import objects.VerticalSteel;
 import objects.Wall;
 import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.utils.Point2D;
@@ -76,6 +83,12 @@ public class Room {
             	String line = sc.nextLine();
 				y++;
 
+				for(int i = 0; i < 10; i++){
+					for(int j = 0; j < 10; j++){
+						r.addObject(new Water(new Point2D(i,j)));
+					}
+				}
+
             	for (int i = 0; i < line.length(); i++) {
                 	char letter = line.charAt(i);
 
@@ -92,11 +105,11 @@ public class Room {
 					}
 
 					if(letter == 'H'){
-						r.addObject(new HorizontalTube(new Point2D(i,y)));
+						r.addObject(new HorizontalSteel(new Point2D(i,y)));
 					}
 					
 					if(letter == 'V'){
-						r.addObject(new VerticalTube(new Point2D(i,y)));
+						r.addObject(new VerticalSteel(new Point2D(i,y)));
 					}
 
 					if(letter == 'C'){
@@ -126,15 +139,6 @@ public class Room {
 					if(letter == 'X'){
 						r.addObject(new HoledWall(new Point2D(i,y)));
 					}
-
-					if(letter == ' '){
-						r.addObject(new Water(new Point2D(i,y)));
-					}
-					
-
-					
-
-					
 
 				}
 
