@@ -7,7 +7,10 @@ import java.util.List;
 import java.util.Scanner;
 
 import objects.Water;
+import objects.Anchor;
 import objects.BigFish;
+import objects.Bomb;
+import objects.Cup;
 import objects.GameObject;
 import objects.SmallFish;
 import objects.Wall;
@@ -61,41 +64,78 @@ public class Room {
 	}
 	
 	public static Room readRoom(File f) {
-		
-	// Temos de adicionar aqui:
-		// água no fundo(layer 0 )
-		// leitura dos objetos obtidos do ficheiro
 
 		Room r = new Room();
 		r.setName(f.getName());	
 
-		for(int i = 0; i < 10; i++){
-			for(int j = 0; j < 10; j++){
-				r.addObject(new Water(new Point2D(i,j)));
-			}
-		}
 		try {
 			Scanner sc = new Scanner(f);
-			int x = -1;
+			int y = -1;
 	
 			while (sc.hasNextLine()) {
             	String line = sc.nextLine();
-				x++;
+				y++;
 
             	for (int i = 0; i < line.length(); i++) {
                 	char letter = line.charAt(i);
 
-					if(letter == 'W'){
-						r.addObject(new Wall(new Point2D(i,x)));
-					}
-
 					if(letter == 'B'){
-						r.addObject(new BigFish(new Point2D(x,i)));
+						r.addObject(new BigFish(new Point2D(i,y)));
 					}
 
 					if(letter == 'S'){
-						r.addObject(new SmallFish(new Point2D(x,i)));
+						r.addObject(new SmallFish(new Point2D(i,y)));
 					}
+					
+					if(letter == 'W'){
+						r.addObject(new Wall(new Point2D(i,y)));
+					}
+
+					if(letter == 'H'){
+						r.addObject(new HorizontalTube(new Point2D(i,y)));
+					}
+					
+					if(letter == 'V'){
+						r.addObject(new VerticalTube(new Point2D(i,y)));
+					}
+
+					if(letter == 'C'){
+						r.addObject(new Cup(new Point2D(i,y)));
+					}
+
+					if(letter == 'R'){
+						r.addObject(new Stone(new Point2D(i,y)));
+					}
+
+					if(letter == 'A'){
+						r.addObject(new Anchor(new Point2D(i,y)));
+					}
+
+					if(letter == 'b'){
+						r.addObject(new Bomb(new Point2D(i,y)));
+					}
+
+					if(letter == 'T'){
+						r.addObject(new Trap(new Point2D(i,y)));
+					}
+
+					if(letter == 'Y'){
+						r.addObject(new Trunk(new Point2D(i,y)));
+					}
+
+					if(letter == 'X'){
+						r.addObject(new HoledWall(new Point2D(i,y)));
+					}
+
+					if(letter == ' '){
+						r.addObject(new Water(new Point2D(i,y)));
+					}
+					
+
+					
+
+					
+
 				}
 
 
