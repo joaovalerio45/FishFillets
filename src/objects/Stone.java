@@ -1,0 +1,19 @@
+package objects;
+
+import pt.iscte.poo.utils.Point2D;
+
+public class Stone extends GameObject {
+    public Stone(Point2D p) {
+		super(p);
+	}
+	
+	@Override
+	public String getName() {
+		return "stone";
+	}
+
+	@Override
+	public int getLayer() {
+		return 2;
+	}
+}
