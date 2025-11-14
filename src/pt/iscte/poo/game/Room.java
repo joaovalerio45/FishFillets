@@ -11,6 +11,7 @@ import objects.Anchor;
 import objects.BigFish;
 import objects.Bomb;
 import objects.Cup;
+import objects.GameCharacter;
 import objects.GameObject;
 import objects.HoledWall;
 import objects.HorizontalSteel;
@@ -30,6 +31,7 @@ public class Room {
 	
 	private SmallFish sf;
 	private BigFish bf;
+	GameCharacter activeFish = getBigFish();
 	
 	public Room() {
 		objects = new ArrayList<GameObject>();
@@ -52,6 +54,10 @@ public class Room {
 		objects.remove(obj);
 		ImageGUI.getInstance().removeImage(obj);
 	}
+
+	public GameCharacter getActiveFish() {
+		return activeFish;
+	}
 	
 	public SmallFish getSmallFish() {
 		return sf;
@@ -60,6 +66,10 @@ public class Room {
 	public BigFish getBigFish() {
 		return bf;
 	}
+
+	public void setActiveFish(GameCharacter af){
+		this.activeFish = af;
+	}
 	
 	public void setSmallFish(SmallFish sf) {
 		this.sf = sf;
@@ -67,6 +77,14 @@ public class Room {
 	
 	public void setBigFish(BigFish bf) {
 		this.bf = bf;
+	}
+
+	public void switchActiveFish(){
+		if(activeFish == getBigFish()){
+			activeFish = getSmallFish();
+		}else{
+			activeFish = getBigFish();
+		}
 	}
 	
 	public static Room readRoom(File f) {
@@ -154,6 +172,11 @@ public class Room {
 		
 		return r;
 		
+	}
+
+	public GameCharacter switchFish() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'switchFish'");
 	}
 	
 }

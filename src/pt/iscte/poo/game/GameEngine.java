@@ -1,5 +1,6 @@
 package pt.iscte.poo.game;
 
+import java.awt.event.KeyEvent;
 import java.io.File;
 
 import pt.iscte.poo.gui.ImageGUI;
@@ -23,12 +24,15 @@ public class GameEngine implements Observer {
 	public void update(Observed source) {
 
 		if (ImageGUI.getInstance().wasKeyPressed()) {
-			
+
 			int k = ImageGUI.getInstance().keyPressed();
 			
+			if(k == KeyEvent.VK_SPACE){
+				currentRoom.switchActiveFish();
+			}
+			
 			if (Direction.isDirection(k)) { 
-				currentRoom.getSmallFish().move(Direction.directionFor(k).asVector());
-				currentRoom.getBigFish().move(Direction.directionFor(k).asVector());
+				currentRoom.getActiveFish().move(Direction.directionFor(k).asVector());
 			}
 		}
 		int t = ImageGUI.getInstance().getTicks();
