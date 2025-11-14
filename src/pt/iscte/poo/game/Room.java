@@ -31,7 +31,7 @@ public class Room {
 	
 	private SmallFish sf;
 	private BigFish bf;
-	GameCharacter activeFish = getBigFish();
+	GameCharacter activeFish = null;
 	
 	public Room() {
 		objects = new ArrayList<GameObject>();
@@ -92,6 +92,12 @@ public class Room {
 		Room r = new Room();
 		r.setName(f.getName());	
 
+		for(int i = 0; i < 10; i++){
+			for(int j = 0; j < 10; j++){
+				r.addObject(new Water(new Point2D(i,j)));
+			}
+		}
+
 		try {
 			Scanner sc = new Scanner(f);
 			int y = -1;
@@ -99,12 +105,6 @@ public class Room {
 			while (sc.hasNextLine()) {
             	String line = sc.nextLine();
 				y++;
-
-				for(int i = 0; i < 10; i++){
-					for(int j = 0; j < 10; j++){
-						r.addObject(new Water(new Point2D(i,j)));
-					}
-				}
 
             	for (int i = 0; i < line.length(); i++) {
                 	char letter = line.charAt(i);
@@ -165,6 +165,7 @@ public class Room {
 
 
 			}
+			r.setActiveFish(r.getBigFish());
 			sc.close();
 		} catch (FileNotFoundException e) {
 			System.err.println("Ficheiro não Encontrado");
