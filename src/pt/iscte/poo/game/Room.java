@@ -86,14 +86,14 @@ public class Room {
                 	char letter = line.charAt(i);
 
 					if(letter == 'W'){
-						r.addObject(new Wall(new Point2D(x,i)));
+						r.addObject(new Wall(new Point2D(i,x)));
 					}
 
 					if(letter == 'B'){
 						r.addObject(new BigFish(new Point2D(x,i)));
 					}
 
-					if(letter == 'b'){
+					if(letter == 'S'){
 						r.addObject(new SmallFish(new Point2D(x,i)));
 					}
 				}
