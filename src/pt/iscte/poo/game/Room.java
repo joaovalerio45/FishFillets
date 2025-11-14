@@ -92,11 +92,15 @@ public class Room {
                 	char letter = line.charAt(i);
 
 					if(letter == 'B'){
-						r.addObject(new BigFish(new Point2D(i,y)));
+						BigFish bf = new BigFish(new Point2D(i,y));
+						r.addObject(bf);
+						r.setBigFish(bf);
 					}
-
+					
 					if(letter == 'S'){
-						r.addObject(new SmallFish(new Point2D(i,y)));
+						SmallFish sf = new SmallFish(new Point2D(i,y));
+						r.addObject(sf);
+						r.setSmallFish(sf);
 					}
 					
 					if(letter == 'W'){
