@@ -7,7 +7,6 @@ import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.observer.Observed;
 import pt.iscte.poo.observer.Observer;
 import pt.iscte.poo.utils.Direction;
-import pt.iscte.poo.utils.Vector2D;
 
 public class GameEngine implements Observer {
 	
