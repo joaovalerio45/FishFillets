@@ -44,6 +44,15 @@ public class Room {
 	public String getName() {
 		return roomName;
 	}
+
+	public GameObject getObjectAt(Point2D position) {
+		for(GameObject i : objects){
+			if(i.getPosition() == position){
+				return i;
+			}
+		}
+		return null;
+	}
 	
 	public void addObject(GameObject obj) {
 		objects.add(obj);
@@ -173,4 +182,8 @@ public class Room {
 		
 		return r;	
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> f4ad5b500a29c5f7dae51244fb50636e017e6d88
 }

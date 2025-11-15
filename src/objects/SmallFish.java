@@ -17,4 +17,9 @@ public class SmallFish extends GameCharacter {
 	public int getLayer() {
 		return 2;
 	}
+
+	@Override
+	public boolean canPassThrough(){
+		return true;
+	}
 }

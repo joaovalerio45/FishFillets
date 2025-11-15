@@ -19,6 +19,6 @@ public HoledWall(Point2D p) {
 
 	@Override
 	public boolean isObstacle(GameCharacter gc){
-		if(gc.)
+		return(!gc.canPassThrough());
 	}
 }
