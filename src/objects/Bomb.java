@@ -2,7 +2,7 @@ package objects;
 
 import pt.iscte.poo.utils.Point2D;
 
-public class Bomb extends GameObject {
+public class Bomb extends MobileObject {
     public Bomb(Point2D p) {
 		super(p);
 	}

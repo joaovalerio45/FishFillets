@@ -2,7 +2,7 @@ package objects;
 
 import pt.iscte.poo.utils.Point2D;
 
-public class Cup extends GameObject {
+public class Cup extends MobileObject {
     public Cup(Point2D p) {
 		super(p);
 	}
