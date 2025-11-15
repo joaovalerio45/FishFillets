@@ -17,4 +17,9 @@ public class BigFish extends GameCharacter {
 	public int getLayer() {
 		return 2;
 	}
+
+	@Override
+	public boolean canPassThrough(){
+		return false;
+	}
 }

@@ -31,4 +31,5 @@ public abstract class GameObject implements ImageTile{
 	public boolean isObstacle(GameCharacter gc){
 		return false;
 	}
+
 }

@@ -15,6 +15,7 @@ public abstract class GameCharacter extends GameObject {
 		// Random rand = new Random();
 		// Point2D destination = new Point2D(rand.nextInt(10), rand.nextInt(10)); 
 		// setPosition(destination);
+		
 		setPosition(getPosition().plus(dir));	
 	}
 
@@ -23,4 +24,5 @@ public abstract class GameCharacter extends GameObject {
 		return 2;
 	}
 	
+	public abstract boolean canPassThrough();
 }
