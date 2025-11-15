@@ -1,6 +1,6 @@
 package objects;
 
-import java.util.Random;
+//import java.util.Random;
 
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
