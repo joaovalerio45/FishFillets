@@ -16,4 +16,13 @@ public class Cup extends MobileObject {
 	public int getLayer() {
 		return 2;
 	}
+
+	@Override
+	public boolean isObstacle(GameCharacter gc){
+        return false;
+    }
+	@Override
+	public boolean isSupport(){
+		return false;
+	}
 }

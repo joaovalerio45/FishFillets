@@ -173,13 +173,4 @@ public class Room {
 		
 		return r;	
 	}
-
-	public boolean isBlocked(Point2D position) {
-		for(GameObject i : objects){
-			if(i.getPosition() == position){
-				return true;
-			}
-		}
-		return false;
-	}
 }

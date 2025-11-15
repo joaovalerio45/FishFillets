@@ -16,4 +16,7 @@ public class Stone extends GameObject {
 	public int getLayer() {
 		return 2;
 	}
+	public boolean isObstacle(GameCharacter gc){
+		return false;
+	}
 }

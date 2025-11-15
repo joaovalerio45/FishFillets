@@ -16,4 +16,5 @@ public class Anchor extends MobileObject{
 	public int getLayer() {
 		return 2;
 	}
+	
 }
