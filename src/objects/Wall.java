@@ -2,7 +2,7 @@ package objects;
 
 import pt.iscte.poo.utils.Point2D;
 
-public class Wall extends GameObject {
+public class Wall extends FixedObject {
     
     public Wall(Point2D p){
         super(p);

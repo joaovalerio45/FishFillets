@@ -23,4 +23,12 @@ public abstract class GameObject implements ImageTile{
 	public Point2D getPosition() {
 		return position;
 	}	
+
+	public boolean isSupport(){
+		return true;
+	}
+
+	public boolean isObstacle(GameCharacter gc){
+		return false;
+	}
 }
