@@ -27,12 +27,11 @@ public class GameEngine implements Observer {
 
 			int k = ImageGUI.getInstance().keyPressed();
 			
-			if(k == KeyEvent.VK_SPACE){
-				currentRoom.switchActiveFish();
-			}
-			
 			if (Direction.isDirection(k)) { 
 				currentRoom.getActiveFish().move(Direction.directionFor(k).asVector());
+			}
+			if(k == KeyEvent.VK_SPACE){
+				currentRoom.switchActiveFish();
 			}
 		}
 		int t = ImageGUI.getInstance().getTicks();

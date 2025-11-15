@@ -2,7 +2,7 @@ package objects;
 
 import pt.iscte.poo.utils.Point2D;
 
-public class Trap extends GameObject {
+public class Trap extends MobileObject {
 public Trap(Point2D p) {
 		super(p);
 	}
