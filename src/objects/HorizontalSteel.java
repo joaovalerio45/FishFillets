@@ -2,7 +2,7 @@ package objects;
 
 import pt.iscte.poo.utils.Point2D;
 
-public class HorizontalSteel extends GameObject{
+public class HorizontalSteel extends FixedObject{
 public HorizontalSteel(Point2D p) {
 		super(p);
 	}

@@ -2,7 +2,7 @@ package objects;
 
 import pt.iscte.poo.utils.Point2D;
 
-public class Water extends GameObject{
+public class Water extends FixedObject{
 
 	public Water(Point2D p) {
 		super(p);
@@ -16,6 +16,16 @@ public class Water extends GameObject{
 	@Override
 	public int getLayer() {
 		return 0;
+	}
+
+	@Override
+	public boolean isSupport(){
+		return false;
+	}
+
+	@Override
+	public boolean isObstacle(GameCharacter gc) {
+		return false;
 	}
 
 }

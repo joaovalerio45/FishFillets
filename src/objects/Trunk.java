@@ -2,7 +2,7 @@ package objects;
 
 import pt.iscte.poo.utils.Point2D;
 
-public class Trunk extends GameObject {
+public class Trunk extends FixedObject {
 public Trunk(Point2D p) {
 		super(p);
 	}

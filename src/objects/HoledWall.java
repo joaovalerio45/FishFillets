@@ -2,7 +2,7 @@ package objects;
 
 import pt.iscte.poo.utils.Point2D;
 
-public class HoledWall extends GameObject {
+public class HoledWall extends FixedObject {
 public HoledWall(Point2D p) {
 		super(p);
 	}
@@ -16,4 +16,9 @@ public HoledWall(Point2D p) {
 	public int getLayer() {
 		return 2;
 	} 
+
+	@Override
+	public boolean isObstacle(GameCharacter gc){
+		if(gc.)
+	}
 }
