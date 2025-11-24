@@ -45,13 +45,18 @@ public class Room {
 		return roomName;
 	}
 
-	public GameObject getObjectsAt(Point2D position) {
+	public List<GameObject> getObjectsAt(Point2D position) {
+		List<GameObject> gameObj = new ArrayList<>();
 		for(GameObject i : objects){
-			if(i.getPosition() == position){
-				return i;
+			if(i.getPosition().equals(position)){
+				gameObj.add(i);
 			}
 		}
-		return null;
+		return gameObj;
+	}
+
+	public boolean isValidMove(Point2D from, Point2D to){
+		
 	}
 	
 	public void addObject(GameObject obj) {
