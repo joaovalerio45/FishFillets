@@ -45,7 +45,7 @@ public class Room {
 		return roomName;
 	}
 
-	public GameObject getObjectAt(Point2D position) {
+	public GameObject getObjectsAt(Point2D position) {
 		for(GameObject i : objects){
 			if(i.getPosition() == position){
 				return i;
