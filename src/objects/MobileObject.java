@@ -14,7 +14,7 @@ public abstract class MobileObject extends GameObject{
 	}
 	@Override
 	public boolean isSupport() {
-		return true;
+		return false;
 	}
 	
 	public int getLayer() {

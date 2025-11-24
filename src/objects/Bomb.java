@@ -16,9 +16,4 @@ public class Bomb extends MobileObject {
 	public int getLayer() {
 		return 2;
 	}
-
-	@Override
-	public boolean isSupport(){
-		return false;
-	}
 }
