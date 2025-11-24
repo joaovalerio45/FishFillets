@@ -55,8 +55,13 @@ public class Room {
 		return gameObj;
 	}
 
-	public boolean isValidMove(Point2D from, Point2D to){
-		
+	public boolean isValidMove(Point2D to){
+		for(GameObject o : getObjectsAt(to)){
+			if(o.isObstacle(activeFish)){
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	public void addObject(GameObject obj) {
