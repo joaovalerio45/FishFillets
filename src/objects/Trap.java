@@ -19,8 +19,8 @@ public Trap(Point2D p) {
 
 	@Override
 	public boolean isObstacle(GameCharacter gc){
-		return(!gc.canPassThrough());
+		return(gc.canPassThrough());
 	}
 
-	
+
 }

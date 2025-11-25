@@ -29,8 +29,8 @@ public class GameEngine implements Observer {
 	
 			
 			if (Direction.isDirection(k)){
-				currentRoom.tryMove(currentRoom.getActiveFish().getPosition().plus(Direction.directionFor(k).asVector()));
-				move(Direction.directionFor(k).asVector());
+				currentRoom.tryMove(Direction.directionFor(k).asVector());
+				
 			}
 			if(k == KeyEvent.VK_SPACE){
 				currentRoom.switchActiveFish();

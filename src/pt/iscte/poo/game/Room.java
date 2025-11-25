@@ -58,7 +58,9 @@ public class Room {
 	}
 
 
-	public void tryMove(Point2D to){
+	public void tryMove(Vector2D vec){
+
+		Point2D to = getActiveFish().getPosition().plus(vec);
 
 		for(GameObject o : getObjectsAt(to)){
 			if(o.isObstacle(activeFish)){
@@ -66,13 +68,14 @@ public class Room {
 			}
 
 			if(o.getName() == "trap" ){
-				objects.remove(activeFish);
+				removeObject(getActiveFish());
+				getActiveFish().move(vec.plus(new Vector2D(1, 0)));
 			}
 		}
 
 
-		
-		getActiveFish().move();
+
+		getActiveFish().move(vec);
 
 
 
