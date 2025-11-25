@@ -66,7 +66,7 @@ public class Room {
 
 			if(o.getName().equals("trap")){
 				if(getActiveFish().canPassThrough()){
-					getActiveFish().move(vec.plus((activeFish.getIsFacingRight() ? new Vector2D(1, 0) : new Vector2D(-1, 0))));
+					getActiveFish().move(vec.plus());
 					return;
 				}else{
 					removeObject(getActiveFish());
