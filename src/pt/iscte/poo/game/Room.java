@@ -23,6 +23,8 @@ import objects.VerticalSteel;
 import objects.Wall;
 import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.utils.Point2D;
+import pt.iscte.poo.utils.Vector2D;
+import pt.iscte.poo.utils.Direction;
 
 public class Room {
 	
@@ -55,14 +57,29 @@ public class Room {
 		return gameObj;
 	}
 
-	public boolean isValidMove(Point2D to){
+
+	public void tryMove(Point2D to){
+
 		for(GameObject o : getObjectsAt(to)){
 			if(o.isObstacle(activeFish)){
-				return false;
+				return;
+			}
+
+			if(o.getName() == "trap" ){
+				objects.remove(activeFish);
 			}
 		}
-		return true;
+
+
+		
+		getActiveFish().move();
+
+
+
+
 	}
+
+
 	
 	public void addObject(GameObject obj) {
 		objects.add(obj);

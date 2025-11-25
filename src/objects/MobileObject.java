@@ -1,6 +1,7 @@
 package objects;
 
 import pt.iscte.poo.utils.Point2D;
+import pt.iscte.poo.utils.Vector2D;
 
 public abstract class MobileObject extends GameObject{
     
@@ -19,5 +20,15 @@ public abstract class MobileObject extends GameObject{
 	
 	public int getLayer() {
 		return 1;
+	}
+
+	@Override
+	public boolean isMobile(){
+		return true;
+	}
+
+	public void move(Vector2D dir) {
+		
+		setPosition(getPosition().plus(dir));	
 	}
 }

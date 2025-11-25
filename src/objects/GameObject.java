@@ -32,4 +32,8 @@ public abstract class GameObject implements ImageTile{
 		return false;
 	}
 
+	public boolean isMobile(){
+		return false;
+	}
+
 }
