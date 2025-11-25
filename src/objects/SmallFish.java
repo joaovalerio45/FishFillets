@@ -1,5 +1,7 @@
 package objects;
 
+import java.awt.event.KeyEvent;
+
 import pt.iscte.poo.utils.Point2D;
 
 public class SmallFish extends GameCharacter {
@@ -10,7 +12,12 @@ public class SmallFish extends GameCharacter {
 	
 	@Override
 	public String getName() {
-		return "smallFishLeft";
+		if(getIsFacingRight()){
+			return "smallFishRight";
+		}else{
+			return "smallFishLeft";
+		}
+		
 	}
 
 	@Override
