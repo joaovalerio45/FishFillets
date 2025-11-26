@@ -79,7 +79,7 @@ public class Room {
 			if(to.equals(bf.getPosition())){
 				return;
 			}
-		}else if(activeFish == bf && sf != null){
+		}else if(activeFish == bf && objects.contains(sf)){
 			if(to.equals(sf.getPosition())){
 				return;
 			}
