@@ -75,6 +75,16 @@ public class Room {
 
 		Point2D to = getActiveFish().getPosition().plus(vec);
 
+		if(activeFish == sf){
+			if(to.equals(bf.getPosition())){
+				return;
+			}
+		}else if(activeFish == bf){
+			if(to.equals(sf.getPosition())){
+				return;
+			}
+		}
+
 		for(GameObject o : getObjectsAt(to)){
 
 			if(o.getName().equals("trap")){
@@ -97,7 +107,8 @@ public class Room {
 						return;
 					}
 				}
-			}	
+				return;
+			}
 		}
 
 		getActiveFish().move(vec);
