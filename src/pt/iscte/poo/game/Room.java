@@ -99,16 +99,35 @@ public class Room {
 				return;
 			}
 
-			if(o.isMobile() ){
+			if(o.isMobile()){
 				if(activeFish.canPassThrough()){
 					if(o.isLight() && getObjectsAt(to.plus(vec)).isEmpty()){
 						getActiveFish().move(vec);
 						o.move(vec);
 						return;
 					}
+				} else {
+					if(vec.getX() == 0){
+						if(getObjectsAt(to.plus(vec)).isEmpty()){
+							getActiveFish().move(vec);
+							o.move(vec);
+							return;
+						}
+					}
+					if(vec.getY() == 0){
+						for(int x = 0; !isOutOfBounds(bf.getPosition().plus(new Vector2D(x,0))); x++){
+							if(getObjectsAt(to.plus(new Vector2D(x,0))).isEmpty()){
+								getActiveFish().move(vec);
+								o.move(vec);
+								return;
+							}
+						}
+					}
 				}
 				return;
 			}
+
+
 		}
 
 		getActiveFish().move(vec);
