@@ -128,9 +128,8 @@ public class Room {
 				}
 			}
 		}
-
+		int heavyObjects = 0;
 		for(int y = 0; !isOutOfBounds(bf.getPosition().plus(new Vector2D(0,-y))); y++){
-			int heavyObjects = 0;
 			for(GameObject o : getObjectsAt(bf.getPosition().plus(new Vector2D(0, -y)))){
 				if( o.isMobile() && !o.isLight()){
 				heavyObjects++;
@@ -143,6 +142,20 @@ public class Room {
 			}
 		}
 
+	}
+
+	public void applyGravity(){
+		for(GameObject o : objects){
+			if(o.isMobile()){
+				List <GameObject> obj = getObjectsAt(o.getPosition().plus(new Vector2D(0, 1)));
+				if(obj.isEmpty()){
+					o.move(new Vector2D(0, 1));
+				}
+				
+			}
+
+			
+		}
 	}
 
 

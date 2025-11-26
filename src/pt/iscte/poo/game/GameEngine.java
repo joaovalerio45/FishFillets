@@ -49,7 +49,8 @@ public class GameEngine implements Observer {
 		ImageGUI.getInstance().update();
 	}
 
-	private void processTick() {		
+	private void processTick() {
+		currentRoom.applyGravity();		
 		lastTickProcessed++;
 	}	
 }
