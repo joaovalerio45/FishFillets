@@ -23,8 +23,6 @@ public class GameEngine implements Observer {
 	@Override
 	public void update(Observed source) {
 
-		currentRoom.checkWeigth();
-
 		if (ImageGUI.getInstance().wasKeyPressed()) {
 
 			int k = ImageGUI.getInstance().keyPressed();
@@ -40,6 +38,9 @@ public class GameEngine implements Observer {
 				currentRoom.switchActiveFish();
 			}
 		}
+
+		currentRoom.checkWeight();
+
 		int t = ImageGUI.getInstance().getTicks();
 		while (lastTickProcessed < t) {
 			processTick();
