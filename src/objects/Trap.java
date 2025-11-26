@@ -13,11 +13,6 @@ public Trap(Point2D p) {
 	}
 
 	@Override
-	public int getLayer() {
-		return 2;
-	}
-
-	@Override
 	public boolean isObstacle(GameCharacter gc){
 		return(!gc.canPassThrough());
 	}

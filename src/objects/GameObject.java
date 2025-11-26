@@ -20,6 +20,11 @@ public abstract class GameObject implements ImageTile{
 	}
 
 	@Override
+	public int getLayer() {
+		return 1;
+	}
+
+	@Override
 	public Point2D getPosition() {
 		return position;
 	}	

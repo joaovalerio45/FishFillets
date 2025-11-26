@@ -12,10 +12,8 @@ public HoledWall(Point2D p) {
 		return "holedWall";
 	}
 
-	@Override
-	public int getLayer() {
-		return 2;
-	} 
+
+	
 
 	@Override
 	public boolean isObstacle(GameCharacter gc){

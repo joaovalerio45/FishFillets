@@ -13,11 +13,6 @@ public class Cup extends MobileObject {
 	}
 
 	@Override
-	public int getLayer() {
-		return 2;
-	}
-
-	@Override
 	public boolean isObstacle(GameCharacter gc){
         return false;
     }

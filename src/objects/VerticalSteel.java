@@ -12,8 +12,4 @@ public VerticalSteel(Point2D p) {
 		return "steelHorizontal";
 	}
 
-	@Override
-	public int getLayer() {
-		return 2;
-	}
 }

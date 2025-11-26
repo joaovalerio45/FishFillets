@@ -65,15 +65,11 @@ public class Room {
 		for(GameObject o : getObjectsAt(to)){
 
 			if(o.getName().equals("trap")){
-				if(getActiveFish().canPassThrough()){
-					getActiveFish().move(vec.plus());
-					return;
-				}else{
+				if(!getActiveFish().canPassThrough()){
 					removeObject(getActiveFish());
 					switchActiveFish();
 					return;
 				}
-
 			}
 
 			if(o.isObstacle(activeFish)){

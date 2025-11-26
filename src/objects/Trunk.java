@@ -11,12 +11,7 @@ public Trunk(Point2D p) {
 	public String getName() {
 		return "trunk";
 	}
-
-	@Override
-	public int getLayer() {
-		return 2;
-	}
-
+	
 	@Override
     public boolean isObstacle(GameCharacter gc){
         return false;

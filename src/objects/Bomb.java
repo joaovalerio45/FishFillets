@@ -12,8 +12,4 @@ public class Bomb extends MobileObject {
 		return "bomb";
 	}
 
-	@Override
-	public int getLayer() {
-		return 2;
-	}
 }

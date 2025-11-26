@@ -12,10 +12,6 @@ public class Stone extends MobileObject {
 		return "stone";
 	}
 
-	@Override
-	public int getLayer() {
-		return 2;
-	}
 	public boolean isObstacle(GameCharacter gc){
 		return false;
 	}

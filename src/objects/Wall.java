@@ -13,8 +13,4 @@ public class Wall extends FixedObject {
         return "wall";
     }
 
-    @Override
-    public int getLayer() {
-        return 1;
-    }
 }

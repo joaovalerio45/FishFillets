@@ -11,10 +11,5 @@ public class Anchor extends MobileObject{
 	public String getName() {
 		return "anchor";
 	}
-
-	@Override
-	public int getLayer() {
-		return 2;
-	}
 	
 }
