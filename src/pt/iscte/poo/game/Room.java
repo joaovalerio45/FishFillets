@@ -24,7 +24,6 @@ import objects.Wall;
 import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
-import pt.iscte.poo.utils.Direction;
 
 public class Room {
 	
