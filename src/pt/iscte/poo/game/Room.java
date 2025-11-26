@@ -87,18 +87,11 @@ public class Room {
 						o.move(vec);
 						return;
 					}
-				}else{
-
 				}
 			}	
 		}
 
-
-
 		getActiveFish().move(vec);
-
-
-
 
 	}
 
@@ -119,6 +112,7 @@ public class Room {
 				}
 			}
 		}
+
 	}
 
 
