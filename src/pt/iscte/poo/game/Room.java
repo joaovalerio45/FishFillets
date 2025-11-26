@@ -97,14 +97,14 @@ public class Room {
 
 	public void checkWeight(){
 		
-		for(GameObject o : getObjectsAt(sf.getPosition().plus(new Vector2D(0, 1)))){
+		for(GameObject o : getObjectsAt(sf.getPosition().plus(new Vector2D(0, -1)))){
 			if(o.isMobile()){
 				if(!o.isLight()){
 					removeObject(sf);
 					switchActiveFish();
 					return;
 				}else{
-					for(GameObject o1 : getObjectsAt(sf.getPosition().plus(new Vector2D(0, 2)))){
+					for(GameObject o1 : getObjectsAt(sf.getPosition().plus(new Vector2D(0, -2)))){
 						if(o1.isMobile()){
 							removeObject(sf);
 							switchActiveFish();
@@ -115,11 +115,11 @@ public class Room {
 			}
 		}
 
-		for(GameObject o : getObjectsAt(bf.getPosition().plus(new Vector2D(0, 1)))){
+		for(GameObject o : getObjectsAt(bf.getPosition().plus(new Vector2D(0, -1)))){
 			if( o.isMobile() && !o.isLight()){
-				for(GameObject o1 : getObjectsAt(bf.getPosition().plus(new Vector2D(0, 2)))){
+				for(GameObject o1 : getObjectsAt(bf.getPosition().plus(new Vector2D(0, -2)))){
 					if(o1.isMobile() && !o.isLight()){
-						removeObject(sf);
+						removeObject(bf);
 						switchActiveFish();
 						return;
 					}
