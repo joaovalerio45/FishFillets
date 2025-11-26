@@ -39,13 +39,11 @@ public class GameEngine implements Observer {
 			}
 		}
 
-		currentRoom.checkWeight();
-
 		int t = ImageGUI.getInstance().getTicks();
 		while (lastTickProcessed < t) {
 			processTick();
 		}
-		
+		currentRoom.checkWeight();
 		ImageGUI.getInstance().update();
 	}
 
