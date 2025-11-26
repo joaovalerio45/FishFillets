@@ -75,11 +75,11 @@ public class Room {
 
 		Point2D to = getActiveFish().getPosition().plus(vec);
 
-		if(activeFish == sf){
+		if(activeFish == sf && objects.contains(bf)){
 			if(to.equals(bf.getPosition())){
 				return;
 			}
-		}else if(activeFish == bf){
+		}else if(activeFish == bf && sf != null){
 			if(to.equals(sf.getPosition())){
 				return;
 			}
