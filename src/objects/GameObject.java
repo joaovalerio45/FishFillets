@@ -12,6 +12,7 @@ public abstract class GameObject implements ImageTile{
 		this.position = position;
 	}
 
+
 	public void setPosition(int i, int j) {
 		position = new Point2D(i, j);
 	}
@@ -21,7 +22,8 @@ public abstract class GameObject implements ImageTile{
 	}
 
 	public void move(Vector2D dir) {
-		setPosition(getPosition().plus(dir));	
+		setPosition(getPosition().plus(dir));
+
 	}
 
 	@Override
