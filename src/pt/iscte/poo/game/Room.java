@@ -50,10 +50,24 @@ public class Room {
 		List<GameObject> gameObj = new ArrayList<>();
 		for(GameObject i : objects){
 			if(i.getPosition().equals(position)){
-				gameObj.add(i);
+				if( !i.getName().equals("water")){
+					gameObj.add(i);
+				}
 			}
 		}
 		return gameObj;
+	}
+
+	public boolean isOutOfBounds(Point2D p){
+
+		List<GameObject> objs = getObjectsAt(p);
+		for(GameObject obj : objs){
+			if(!obj.getName().equals("wall")){
+				return false;
+			}
+		}
+		return true;
+
 	}
 
 
@@ -115,15 +129,17 @@ public class Room {
 			}
 		}
 
-		for(GameObject o : getObjectsAt(bf.getPosition().plus(new Vector2D(0, -1)))){
-			if( o.isMobile() && !o.isLight()){
-				for(GameObject o1 : getObjectsAt(bf.getPosition().plus(new Vector2D(0, -2)))){
-					if(o1.isMobile() && !o.isLight()){
-						removeObject(bf);
-						switchActiveFish();
-						return;
-					}
+		for(int y = 0; !isOutOfBounds(bf.getPosition().plus(new Vector2D(0,-y))); y++){
+			int heavyObjects = 0;
+			for(GameObject o : getObjectsAt(bf.getPosition().plus(new Vector2D(0, -y)))){
+				if( o.isMobile() && !o.isLight()){
+				heavyObjects++;
 				}
+			}
+			if(heavyObjects >= 2){
+				removeObject(bf);
+				switchActiveFish();
+				return;
 			}
 		}
 
