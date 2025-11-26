@@ -89,15 +89,9 @@ public class Room {
 				return;
 			}
 
-			if(o.isMobile()){
+			if(o.isMobile() ){
 				if(activeFish.canPassThrough()){
-					if(o.isLight()){
-						getActiveFish().move(vec);
-						o.move(vec);
-						return;
-					}
-				}else{
-					if(vec.getX() == 0){
+					if(o.isLight() && getObjectsAt(to.plus(vec)).isEmpty()){
 						getActiveFish().move(vec);
 						o.move(vec);
 						return;

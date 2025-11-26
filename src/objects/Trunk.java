@@ -12,8 +12,4 @@ public Trunk(Point2D p) {
 		return "trunk";
 	}
 	
-	@Override
-    public boolean isObstacle(GameCharacter gc){
-        return false;
-    }
 }

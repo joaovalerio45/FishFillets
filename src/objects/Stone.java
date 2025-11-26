@@ -12,7 +12,4 @@ public class Stone extends MobileObject {
 		return "stone";
 	}
 
-	public boolean isObstacle(GameCharacter gc){
-		return false;
-	}
 }

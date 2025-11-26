@@ -11,7 +11,7 @@ public abstract class MobileObject extends GameObject{
 
 	@Override
 	public boolean isObstacle(GameCharacter gc){
-		return true;
+		return false;
 	}
 	@Override
 	public boolean isSupport() {

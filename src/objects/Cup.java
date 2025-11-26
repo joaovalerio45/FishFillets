@@ -13,11 +13,6 @@ public class Cup extends MobileObject {
 	}
 
 	@Override
-	public boolean isObstacle(GameCharacter gc){
-        return false;
-    }
-
-	@Override
 	public boolean isLight(){
 		return true;
 	}
