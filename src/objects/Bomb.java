@@ -12,4 +12,9 @@ public class Bomb extends MobileObject {
 		return "bomb";
 	}
 
+
+	@Override
+	public boolean isLight(){
+		return true;
+	}
 }

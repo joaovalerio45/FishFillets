@@ -22,9 +22,10 @@ public abstract class MobileObject extends GameObject{
 	public boolean isMobile(){
 		return true;
 	}
+	
+	
 
 	public void move(Vector2D dir) {
-		
 		setPosition(getPosition().plus(dir));	
 	}
 }

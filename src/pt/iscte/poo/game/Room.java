@@ -75,6 +75,23 @@ public class Room {
 			if(o.isObstacle(activeFish)){
 				return;
 			}
+
+			if(o.isMobile() ){
+				if(activeFish.canPassThrough()){
+					if(o.isLight()){
+						for(GameObject obj : getObjectsAt(o.getPosition().plus(vec))){
+							if(!obj.getName().equals("water")){
+								return;
+							}
+						}
+						getActiveFish().move(vec);
+						o.move(vec);
+						return;
+					}
+				}else{
+
+				}
+			}	
 		}
 
 
