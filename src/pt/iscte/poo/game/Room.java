@@ -115,15 +115,29 @@ public class Room {
 						}
 					}
 					if(vec.getY() == 0){
-						int x = 0;
-						while(!getObjectsAt(bf.getPosition().plus(vec).plus(new Vector2D(x, 0))).isEmpty()){
-							for(GameObject obj : getObjectsAt(bf.getPosition().plus(vec).plus(new Vector2D(x, 0)))){
-								if(obj.isObstacle(bf))
-									return;
-							    
+						Point2D pos = to;
+						List<GameObject> mobile = new ArrayList<>();
+
+						while(true){
+							if(getObjectsAt(pos).isEmpty()){
+								break;
 							}
-							x =+ x + vec.getX();
+							for(GameObject obj : getObjectsAt(pos)){
+								if(obj.isObstacle(activeFish)){
+									return;
+								}
+								if(obj.isMobile()){
+									mobile.add(obj);
+								}
+								pos = pos.plus(vec);
+							}
 						}
+
+						for (int i = mobile.size() - 1; i >= 0; i--) {
+   							GameObject obj = mobile.get(i);
+							obj.move(vec);
+						}
+						getActiveFish().move(vec);
 
 
 					}
