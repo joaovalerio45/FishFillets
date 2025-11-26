@@ -102,6 +102,25 @@ public class Room {
 
 	}
 
+	public void checkWeigth(){
+		
+		for(GameObject o : getObjectsAt(sf.getPosition().plus(new Vector2D(1, 0)))){
+			if(!o.isLight()){
+				removeObject(sf);
+				switchActiveFish();
+				return;
+			}else{
+				for(GameObject o1 : getObjectsAt(sf.getPosition().plus(new Vector2D(2, 0)))){
+					if(o1.isMobile()){
+						removeObject(sf);
+						switchActiveFish();
+						return;
+					}
+				}
+			}
+		}
+	}
+
 
 	
 	public void addObject(GameObject obj) {
