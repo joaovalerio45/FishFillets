@@ -115,13 +115,17 @@ public class Room {
 						}
 					}
 					if(vec.getY() == 0){
-						for(int x = 0; !isOutOfBounds(bf.getPosition().plus(new Vector2D(x,0))); x++){
-							if(getObjectsAt(to.plus(new Vector2D(x,0))).isEmpty()){
-								getActiveFish().move(vec);
-								o.move(vec);
-								return;
+						int x = 0;
+						while(!getObjectsAt(bf.getPosition().plus(vec).plus(new Vector2D(x, 0))).isEmpty()){
+							for(GameObject obj : getObjectsAt(bf.getPosition().plus(vec).plus(new Vector2D(x, 0)))){
+								if(obj.isObstacle(bf))
+									return;
+							    
 							}
+							x =+ x + vec.getX();
 						}
+
+
 					}
 				}
 				return;
