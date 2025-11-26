@@ -92,7 +92,10 @@ public class Room {
 					removeObject(getActiveFish());
 					switchActiveFish();
 					return;
+				}else{
+					getActiveFish().move(vec);
 				}
+
 			}
 
 			if(o.isObstacle(activeFish)){
@@ -101,7 +104,7 @@ public class Room {
 
 			if(o.isMobile()){
 				if(activeFish.canPassThrough()){
-					if(o.isLight() && getObjectsAt(to.plus(vec)).isEmpty()){
+					if((o.isLight() && getObjectsAt(to.plus(vec)).isEmpty()) ){
 						getActiveFish().move(vec);
 						o.move(vec);
 						return;
