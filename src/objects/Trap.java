@@ -15,8 +15,13 @@ public Trap(Point2D p) {
 
 	@Override
 	public boolean move(GameCharacter fish, Direction direction) {
+		return false;
+	}
+
+	@Override
+	public void sink() {
 		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'move'");
+		throw new UnsupportedOperationException("Unimplemented method 'sink'");
 	}
 
 
