@@ -28,6 +28,7 @@ import pt.iscte.poo.utils.Vector2D;
 public class Room {
 	
 	private List<GameObject> objects;
+	private List<GameCharacter> fishes;
 	private String roomName;
 	
 	private SmallFish sf;
@@ -36,6 +37,8 @@ public class Room {
 	
 	public Room() {
 		objects = new ArrayList<GameObject>();
+		fishes.add(this.sf);
+		fishes.add(this.bf);
 	}
 
 	private void setName(String name) {
