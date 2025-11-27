@@ -36,8 +36,7 @@ public class Room {
 	
 	public Room() {
 		objects = new ArrayList<GameObject>();
-		fishes.add(this.sf);
-		fishes.add(this.bf);
+		fishes = new ArrayList<GameCharacter>();
 	}
 
 	private void setName(String name) {
@@ -105,10 +104,12 @@ public class Room {
 	
 	public void setSmallFish(SmallFish sf) {
 		this.sf = sf;
+		this.fishes.add(sf);
 	}
 	
 	public void setBigFish(BigFish bf) {
 		this.bf = bf;
+		this.fishes.add(bf);
 	}
 
 	public void switchActiveFish(){
