@@ -1,5 +1,6 @@
 package objects;
 
+import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
 public class Trap extends MobileObject {
@@ -13,9 +14,11 @@ public Trap(Point2D p) {
 	}
 
 	@Override
-	public boolean isObstacle(GameCharacter gc){
-		return(!gc.canPassThrough());
+	public boolean move(GameCharacter fish, Direction direction) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'move'");
 	}
+
 
 
 }

@@ -23,7 +23,6 @@ import objects.VerticalSteel;
 import objects.Wall;
 import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.utils.Point2D;
-import pt.iscte.poo.utils.Vector2D;
 
 public class Room {
 	
@@ -65,7 +64,7 @@ public class Room {
 
 		List<GameObject> objs = getObjectsAt(p);
 		for(GameObject obj : objs){
-			if(!obj.getName().equals("wall")){
+			if(obj instanceof Wall){
 				return false;
 			}
 		}
@@ -74,138 +73,7 @@ public class Room {
 	}
 
 
-	public void tryMove(Vector2D vec){
-
-		Point2D to = getActiveFish().getPosition().plus(vec);
-
-		if(activeFish == sf && objects.contains(bf)){
-			if(to.equals(bf.getPosition())){
-				return;
-			}
-		}else if(activeFish == bf && objects.contains(sf)){
-			if(to.equals(sf.getPosition())){
-				return;
-			}
-		}
-
-		for(GameObject o : getObjectsAt(to)){
-
-			if(o.getName().equals("trap")){
-				if(!getActiveFish().canPassThrough()){
-					removeObject(getActiveFish());
-					switchActiveFish();
-					return;
-				}else{
-					getActiveFish().move(vec);
-				}
-
-			}
-
-			if(o.isObstacle(activeFish)){
-				return;
-			}
-
-			if(o.isMobile()){
-				if(activeFish.canPassThrough()){
-					if((o.isLight() && getObjectsAt(to.plus(vec)).isEmpty()) ){
-						getActiveFish().move(vec);
-						o.move(vec);
-						return;
-					}
-				} else {
-					if(vec.getX() == 0){
-						if(getObjectsAt(to.plus(vec)).isEmpty()){
-							getActiveFish().move(vec);
-							o.move(vec);
-							return;
-						}
-					}
-					if(vec.getY() == 0){
-						Point2D pos = to;
-						List<GameObject> mobile = new ArrayList<>();
-
-						while(true){
-							if(getObjectsAt(pos).isEmpty()){
-								break;
-							}
-							for(GameObject obj : getObjectsAt(pos)){
-								if(obj.isObstacle(activeFish)){
-									return;
-								}
-								if(obj.isMobile()){
-									mobile.add(obj);
-								}
-								pos = pos.plus(vec);
-							}
-						}
-
-						for (int i = mobile.size() - 1; i >= 0; i--) {
-   							GameObject obj = mobile.get(i);
-							obj.move(vec);
-						}
-						getActiveFish().move(vec);
-
-
-					}
-				}
-				return;
-			}
-
-
-		}
-
-		getActiveFish().move(vec);
-
-	}
-
-	public void checkWeight(){
-		
-		for(GameObject o : getObjectsAt(sf.getPosition().plus(new Vector2D(0, -1)))){
-			if(o.isMobile()){
-				if(!o.isLight()){
-					removeObject(sf);
-					switchActiveFish();
-					return;
-				}else{
-					for(GameObject o1 : getObjectsAt(sf.getPosition().plus(new Vector2D(0, -2)))){
-						if(o1.isMobile()){
-							removeObject(sf);
-							switchActiveFish();
-							return;
-						}
-					}
-				}
-			}
-		}
-		int heavyObjects = 0;
-		for(int y = 0; !isOutOfBounds(bf.getPosition().plus(new Vector2D(0,-y))); y++){
-			for(GameObject o : getObjectsAt(bf.getPosition().plus(new Vector2D(0, -y)))){
-				if( o.isMobile() && !o.isLight()){
-				heavyObjects++;
-				}
-			}
-			if(heavyObjects >= 2){
-				removeObject(bf);
-				switchActiveFish();
-				return;
-			}
-		}
-
-	}
-
-	public void applyGravity(){
-		for(GameObject o : objects){
-			if(o.isMobile()){
-				List <GameObject> obj = getObjectsAt(o.getPosition().plus(new Vector2D(0, 1)));
-				if(obj.isEmpty()){
-					o.move(new Vector2D(0, 1));
-				}
-				
-			}
-
-			
-		}
-	}
+	
 
 
 	

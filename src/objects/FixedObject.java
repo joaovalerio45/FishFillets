@@ -8,8 +8,5 @@ public  abstract class FixedObject extends GameObject {
 		super(position);
 	}
     
-    @Override
-    public boolean isObstacle(GameCharacter gc){
-        return true;
-    }
+
 }

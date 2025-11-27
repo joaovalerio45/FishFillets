@@ -12,8 +12,5 @@ public class Cup extends MobileObject {
 		return "cup";
 	}
 
-	@Override
-	public boolean isLight(){
-		return true;
-	}
+
 }

@@ -1,5 +1,6 @@
 package objects;
 
+import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
 public class Bomb extends MobileObject {
@@ -12,9 +13,11 @@ public class Bomb extends MobileObject {
 		return "bomb";
 	}
 
-
 	@Override
-	public boolean isLight(){
-		return true;
+	public boolean move(GameCharacter fish, Direction direction) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'move'");
 	}
+
+
 }

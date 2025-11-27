@@ -18,9 +18,5 @@ public class SmallFish extends GameCharacter {
 		}
 		
 	}
-
-	@Override
-	public boolean canPassThrough(){
-		return true;
-	}
+	
 }

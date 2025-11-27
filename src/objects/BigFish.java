@@ -18,9 +18,4 @@ public class BigFish extends GameCharacter {
 		
 	}
 
-
-	@Override
-	public boolean canPassThrough(){
-		return false;
-	}
 }

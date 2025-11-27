@@ -5,7 +5,7 @@ package objects;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
 
-public abstract class GameCharacter extends GameObject {
+public abstract class GameCharacter extends GameObject  {
 
 	private boolean isFacingRight = false;
 
@@ -17,10 +17,7 @@ public abstract class GameCharacter extends GameObject {
 		super(p);
 	}
 	
-	public void move(Vector2D dir) {
-		// Random rand = new Random();
-		// Point2D destination = new Point2D(rand.nextInt(10), rand.nextInt(10)); 
-		// setPosition(destination);
+	public void moveFish(Vector2D dir) {
 		if(dir.getX() < 0){
 			isFacingRight = false;
 		}else if(dir.getX() > 0){
@@ -35,5 +32,4 @@ public abstract class GameCharacter extends GameObject {
 		return 2;
 	}
 	
-	public abstract boolean canPassThrough();
 }

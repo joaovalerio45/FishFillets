@@ -31,7 +31,6 @@ public class GameEngine implements Observer {
 			if (Direction.isDirection(k)){
 
 
-				currentRoom.tryMove(Direction.directionFor(k).asVector());
 
 			}
 			if(k == KeyEvent.VK_SPACE){
@@ -43,12 +42,10 @@ public class GameEngine implements Observer {
 		while (lastTickProcessed < t) {
 			processTick();
 		}
-		currentRoom.checkWeight();
 		ImageGUI.getInstance().update();
 	}
 
-	private void processTick() {
-		currentRoom.applyGravity();		
+	private void processTick() {	
 		lastTickProcessed++;
 	}	
 }

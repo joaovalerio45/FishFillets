@@ -1,15 +1,15 @@
 package objects;
 
+import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
-import pt.iscte.poo.utils.Vector2D;
 
 public class Anchor extends MobileObject{
 
-	private boolean hasMovedOnce = false;
-
+	boolean hasMovedOnce;
 
     public Anchor(Point2D p) {
 		super(p);
+		this.hasMovedOnce = false;
 	}
 
 	
@@ -18,17 +18,23 @@ public class Anchor extends MobileObject{
 		return "anchor";
 	}
 
-	@Override
-	public void move(Vector2D dir) {
-		setPosition(getPosition().plus(dir));
-		if(dir.getY() == 0){
-			hasMovedOnce = true;
-		}
-	}
 
 	@Override
-	public boolean isObstacle(GameCharacter gc){
-		return hasMovedOnce;
+	public boolean move(GameCharacter fish, Direction direction) {
+		
+		if(fish instanceof SmallFish){
+			return false;
+		}else if(fish instanceof BigFish){
+			if(hasMovedOnce){
+				return false;
+			}else{
+				this.setPosition(getPosition().plus(direction.asVector()));
+				hasMovedOnce = true;
+				return true;
+			}
+		}
+		return false;
 	}
-	
+
+
 }
