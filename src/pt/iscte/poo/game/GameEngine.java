@@ -29,7 +29,7 @@ public class GameEngine implements Observer {
 	
 			
 			if (Direction.isDirection(k)){
-
+				currentRoom.getActiveFish().moveFish(Direction.directionFor(k).asVector());
 
 
 			}

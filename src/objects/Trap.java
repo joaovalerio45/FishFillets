@@ -18,6 +18,13 @@ public Trap(Point2D p) {
 		return false;
 	}
 
+	public boolean interact(GameCharacter fish, Direction direction){
+		if(fish instanceof BigFish){
+			//matar o peixe grande
+			return true;
+		}
+		return true;
+	}
 	@Override
 	public void sink() {
 		// TODO Auto-generated method stub

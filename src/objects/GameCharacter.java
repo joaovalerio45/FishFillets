@@ -1,11 +1,12 @@
 package objects;
 
+import pt.iscte.poo.game.Room;
 //import java.util.Random;
 
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
 
-public abstract class GameCharacter extends GameObject  {
+public abstract class GameCharacter extends GameObject {
 
 	private boolean isFacingRight = false;
 
@@ -25,6 +26,10 @@ public abstract class GameCharacter extends GameObject  {
 		}
 		
 		setPosition(getPosition().plus(dir));	
+	}
+
+	public void kill(GameCharacter fish, Room room){
+		room.removeObject(fish);
 	}
 
 	@Override

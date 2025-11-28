@@ -3,7 +3,7 @@ package objects;
 import pt.iscte.poo.gui.ImageTile;
 import pt.iscte.poo.utils.Point2D;
 
-public abstract class GameObject implements ImageTile{
+public abstract class GameObject implements ImageTile, Interactable{
 	
 	private Point2D position;
 		
