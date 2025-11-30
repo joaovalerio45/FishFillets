@@ -1,5 +1,6 @@
 package objects;
 
+import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
 public class VerticalSteel extends FixedObject{
@@ -10,6 +11,12 @@ public VerticalSteel(Point2D p) {
 	@Override
 	public String getName() {
 		return "steelHorizontal";
+	}
+
+	@Override
+	public boolean interact(GameCharacter fish, Direction direction) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'interact'");
 	}
 
 }
