@@ -51,7 +51,7 @@ public class Room {
 	public List<GameObject> getObjectsAt(Point2D position) {
 		List<GameObject> gameObj = new ArrayList<>();
 		for(GameObject i : objects){
-			if(i.getPosition().equals(position) && i instanceof Interactable){
+			if(i.getPosition().equals(position) && !(i instanceof Water)){
 				gameObj.add(i);
 			}
 		}

@@ -22,8 +22,7 @@ public class Water extends FixedObject{
 
 	@Override
 	public boolean interact(GameCharacter fish, Direction direction, Room room) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'interact'");
+		return true;
 	}
 
 }

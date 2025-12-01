@@ -1,7 +1,6 @@
 package objects;
 
 import pt.iscte.poo.utils.Point2D;
-import pt.iscte.poo.utils.Direction;
 
 //decidir se adicionamos room aos parametros do movable e do interactable para saber se a posicao para a qual o objeto vai esta vazia
 //se adicionarmos o room às duas interfaces tambem vai ser possivel fazer o kill dentro dos peixes(criamos no gameCharacter)
