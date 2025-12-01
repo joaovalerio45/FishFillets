@@ -15,8 +15,14 @@ public Trunk(Point2D p) {
 		return "trunk";
 	}
 
+
 	@Override
-	public boolean interact(GameCharacter fish, Direction direction, Room room) {
+	public boolean isCrushable() {
+    	return false;
+	}
+
+	@Override
+	public boolean interact(GameObject object, Direction direction, Room room) {
 		return false;
 	}
 	

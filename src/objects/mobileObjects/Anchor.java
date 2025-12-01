@@ -27,15 +27,15 @@ public class Anchor extends MobileObject{
 
 
 	@Override
-	public boolean interact(GameCharacter fish, Direction direction, Room room) {
+	public boolean interact(GameObject object, Direction direction, Room room) {
 
 		if (direction == Direction.UP || direction == Direction.DOWN) {
                 return false;
         }
 
-		if(fish instanceof SmallFish){
+		if(object instanceof SmallFish){
 			return false;
-		}else if(fish instanceof BigFish){
+		}else if(object instanceof BigFish){
 			if(hasMovedOnce){
 				return false;
 			}else{

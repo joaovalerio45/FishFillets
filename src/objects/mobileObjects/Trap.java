@@ -23,23 +23,24 @@ public Trap(Point2D p) {
 
 	public boolean interact(GameCharacter fish, Direction direction, Room room){
 		if(fish instanceof BigFish){
-			//matar o peixe grande
+			fish.kill(room);
 			return false;
 		}else if(fish instanceof SmallFish){
 			return true;
 		}
 		return false;
 	}
-	@Override
-	public void sink() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'sink'");
-	}
 
 	@Override
 	public boolean move(GameCharacter fish, Direction direction, Room room) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'move'");
+		Point2D to = getPosition().plus(direction.asVector());
+		if(fish == null && direction == Direction.DOWN){
+			if(room.getObjectsAt(to).isEmpty()){
+				setPosition(to);
+				return true;
+			}
+		}
+		return false;
 	}
 
 

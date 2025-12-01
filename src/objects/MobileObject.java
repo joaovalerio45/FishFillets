@@ -14,9 +14,6 @@ public abstract class MobileObject extends GameObject implements Movable{
 		super(position);
 	}
 
-	public boolean isHeavy(){
-		return false;
-	}
 	
 	public void sink(){
 		

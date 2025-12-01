@@ -17,11 +17,9 @@ public class Stone extends MobileObject {
 
 
 	@Override
-	public boolean interact(GameCharacter fish, Direction direction, Room room) {
-		if(fish instanceof BigFish){
+	public boolean interact(GameObject object, Direction direction, Room room) {
+		if(object instanceof BigFish){
 			return true;
-		}else if(fish instanceof SmallFish){
-			return false;
 		}
 		return false;
 	}

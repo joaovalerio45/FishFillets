@@ -21,7 +21,6 @@ public abstract class GameObject implements ImageTile, Interactable{
 		this.position = position;
 	}
 
-
 	@Override
 	public int getLayer() {
 		return 1;
@@ -30,7 +29,18 @@ public abstract class GameObject implements ImageTile, Interactable{
 	@Override
 	public Point2D getPosition() {
 		return position;
-	}	
+	}
 
+	public boolean isHeavy(){
+		return false;
+	}
+
+	public boolean isCrushable() {
+    	return false;
+	}
+
+	public boolean isTraversable(GameObject obj){
+		return false;
+	}
 
 }

@@ -29,8 +29,8 @@ public abstract class GameCharacter extends GameObject {
 		setPosition(getPosition().plus(dir));	
 	}
 
-	public void kill(GameCharacter fish, Room room){
-		room.removeObject(fish);
+	public void kill(Room room){
+		room.removeObject(this);
 	}
 
 	@Override

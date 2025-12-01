@@ -1,6 +1,7 @@
 package objects.fixedObjects;
 
 import objects.*;
+import objects.mobileObjects.Cup;
 import pt.iscte.poo.game.Room;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
@@ -16,11 +17,19 @@ public HoledWall(Point2D p) {
 	}
 
 	@Override
-	public boolean interact(GameCharacter fish, Direction direction, Room room) {
-		if(fish instanceof BigFish){
-			return false;
+	public boolean isTraversable(GameObject obj) {
+		if(obj instanceof Cup || obj instanceof SmallFish){
+			return true;
 		}
-		return true;
+		return false;
+	}
+
+	@Override
+	public boolean interact(GameObject object, Direction direction, Room room) {
+		if(isTraversable(object)){
+			return true;
+		}
+		return false;
 	}
 
 

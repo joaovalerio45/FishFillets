@@ -17,7 +17,7 @@ public class Bomb extends MobileObject {
 
 
 	@Override
-	public boolean interact(GameCharacter fish, Direction direction, Room room) {
+	public boolean interact(GameObject object, Direction direction, Room room) {
 		return true;
 	}
 

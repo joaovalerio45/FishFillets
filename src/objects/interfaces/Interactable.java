@@ -5,5 +5,5 @@ import objects.*;
 import pt.iscte.poo.game.Room;
 
 public interface Interactable {
-    boolean interact(GameCharacter fish, Direction direction, Room room);
+    boolean interact(GameObject object, Direction direction, Room room);
 }
