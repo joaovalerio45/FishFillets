@@ -15,10 +15,4 @@ public class Wall extends FixedObject {
     public String getName() {
         return "wall";
     }
-
-    @Override
-    public boolean interact(GameObject object, Direction direction, Room room) {
-        return false;
-    }
-
 }

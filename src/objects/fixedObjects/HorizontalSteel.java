@@ -14,10 +14,4 @@ public HorizontalSteel(Point2D p) {
 	public String getName() {
 		return "steelHorizontal";
 	}
-
-	@Override
-	public boolean interact(GameObject object, Direction direction, Room room) {
-		return false;
-	}
-
 }
