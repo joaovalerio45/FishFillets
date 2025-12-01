@@ -1,12 +1,15 @@
 package pt.iscte.poo.game;
 
+import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
+import objects.GameObject;
 import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.observer.Observed;
 import pt.iscte.poo.observer.Observer;
 import pt.iscte.poo.utils.Direction;
+import pt.iscte.poo.utils.Point2D;
 
 public class GameEngine implements Observer {
 	
@@ -29,12 +32,22 @@ public class GameEngine implements Observer {
 	
 			
 			if (Direction.isDirection(k)){
-				currentRoom.getActiveFish().moveFish(Direction.directionFor(k).asVector());
+
+				Point2D to = currentRoom.getActiveFish().getPosition().plus(Direction.directionFor(k).asVector());
+
+				for(GameObject obj : currentRoom.getObjectsAt(to)){
+					if(obj.interact(currentRoom.activeFish, Direction.directionFor(k), currentRoom))
+						currentRoom.getActiveFish().moveFish(Direction.directionFor(k).asVector());
+				}
+
 
 
 			}
 			if(k == KeyEvent.VK_SPACE){
 				currentRoom.switchActiveFish();
+			}
+			if(k == KeyEvent.VK_R){
+				
 			}
 		}
 

@@ -1,5 +1,6 @@
 package objects;
 
+import pt.iscte.poo.game.Room;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
@@ -13,12 +14,8 @@ public Trap(Point2D p) {
 		return "trap";
 	}
 
-	@Override
-	public boolean move(GameCharacter fish, Direction direction) {
-		return false;
-	}
 
-	public boolean interact(GameCharacter fish, Direction direction){
+	public boolean interact(GameCharacter fish, Direction direction, Room room){
 		if(fish instanceof BigFish){
 			//matar o peixe grande
 			return true;

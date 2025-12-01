@@ -15,6 +15,7 @@ import objects.GameCharacter;
 import objects.GameObject;
 import objects.HoledWall;
 import objects.HorizontalSteel;
+import objects.Interactable;
 import objects.SmallFish;
 import objects.Stone;
 import objects.Trap;
@@ -50,10 +51,8 @@ public class Room {
 	public List<GameObject> getObjectsAt(Point2D position) {
 		List<GameObject> gameObj = new ArrayList<>();
 		for(GameObject i : objects){
-			if(i.getPosition().equals(position)){
-				if( !i.getName().equals("water")){
-					gameObj.add(i);
-				}
+			if(i.getPosition().equals(position) && i instanceof Interactable){
+				gameObj.add(i);
 			}
 		}
 		return gameObj;

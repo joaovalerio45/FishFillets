@@ -8,21 +8,13 @@ import pt.iscte.poo.utils.Direction;
 //e sempre que for preciso matar um dos peixes em alguma das interacoes é so invocar o kill
 
 
-public abstract class MobileObject extends GameObject implements Movable{
+public abstract class MobileObject extends GameObject{
     
 	public MobileObject(Point2D position) {
 		super(position);
 	}
 
-	@Override
-	public boolean interact(GameCharacter fish, Direction direction){
-		return move(fish,direction);
-	}
 	
-	@Override
-	public boolean move(GameCharacter fish, Direction direction){
-		return false;
-	}
 	public void sink(){
 		
 	}

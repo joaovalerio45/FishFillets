@@ -1,6 +1,7 @@
 package objects;
 
 import pt.iscte.poo.game.Room;
+import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
 
@@ -22,6 +23,8 @@ public abstract class GameCharacter extends GameObject {
 		}else if(dir.getX() > 0){
 			isFacingRight = true;
 		}
+
+
 		
 		setPosition(getPosition().plus(dir));	
 	}
@@ -33,6 +36,11 @@ public abstract class GameCharacter extends GameObject {
 	@Override
 	public int getLayer() {
 		return 2;
+	}
+
+	@Override
+	public boolean interact(GameCharacter fish, Direction direction, Room room) {
+		return false;
 	}
 	
 }

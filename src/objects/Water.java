@@ -1,5 +1,6 @@
 package objects;
 
+import pt.iscte.poo.game.Room;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
@@ -20,7 +21,7 @@ public class Water extends FixedObject{
 	}
 
 	@Override
-	public boolean interact(GameCharacter fish, Direction direction) {
+	public boolean interact(GameCharacter fish, Direction direction, Room room) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'interact'");
 	}

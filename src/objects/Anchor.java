@@ -1,5 +1,6 @@
 package objects;
 
+import pt.iscte.poo.game.Room;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
@@ -20,8 +21,12 @@ public class Anchor extends MobileObject{
 
 
 	@Override
-	public boolean move(GameCharacter fish, Direction direction) {
-		
+	public boolean interact(GameCharacter fish, Direction direction, Room room) {
+
+		if (direction == Direction.UP || direction == Direction.DOWN) {
+                return false;
+        }
+
 		if(fish instanceof SmallFish){
 			return false;
 		}else if(fish instanceof BigFish){
