@@ -35,7 +35,6 @@ public class GameEngine implements Observer {
 			if (Direction.isDirection(k)){
 
 				Point2D to = currentRoom.getActiveFish().getPosition().plus(Direction.directionFor(k).asVector());
-
 				List<GameObject> objs = currentRoom.getObjectsAt(to);
 
 				if(objs.isEmpty()){

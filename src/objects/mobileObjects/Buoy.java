@@ -17,10 +17,6 @@ public class Buoy extends MobileObject{
     }
 
 
-    @Override
-    public void sink(){
-        return;
-    }
 
     @Override
     public boolean interact(GameObject object, Direction direction, Room room) {
