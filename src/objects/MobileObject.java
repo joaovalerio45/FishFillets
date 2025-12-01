@@ -3,6 +3,7 @@ package objects;
 import java.util.List;
 
 import objects.interfaces.Movable;
+import objects.interfaces.Tickable;
 import pt.iscte.poo.game.Room;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
@@ -12,7 +13,7 @@ import pt.iscte.poo.utils.Point2D;
 //e sempre que for preciso matar um dos peixes em alguma das interacoes é so invocar o kill
 
 
-public abstract class MobileObject extends GameObject implements Movable{
+public abstract class MobileObject extends GameObject implements Movable,Tickable{
     
 	public MobileObject(Point2D position) {
 		super(position);
@@ -48,10 +49,18 @@ public abstract class MobileObject extends GameObject implements Movable{
         
         return false;
 	}
-	
-	public void sink(){
-		
+
+	@Override
+	public void tickAction(Room room) {
+
+
+		//Comportamento default para objetos móveis : ação da gravidade
+
+		move(null, Direction.DOWN, room);
+
+
 	}
+	
 	
 	
 	

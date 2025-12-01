@@ -5,6 +5,7 @@ import java.io.File;
 import java.util.List;
 
 import objects.GameObject;
+import objects.interfaces.Tickable;
 import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.observer.Observed;
 import pt.iscte.poo.observer.Observer;
@@ -64,7 +65,12 @@ public class GameEngine implements Observer {
 		ImageGUI.getInstance().update();
 	}
 
-	private void processTick() {	
+	private void processTick() {
+		for(GameObject obj : currentRoom.getObjects()){
+			if(obj instanceof Tickable){
+				((Tickable)obj).tickAction(currentRoom);
+			}
+		}
 		lastTickProcessed++;
 	}	
 }

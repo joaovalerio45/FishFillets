@@ -12,7 +12,6 @@ import objects.fixedObjects.Trunk;
 import objects.fixedObjects.VerticalSteel;
 import objects.fixedObjects.Wall;
 import objects.fixedObjects.Water;
-import objects.interfaces.Interactable;
 import objects.mobileObjects.Anchor;
 import objects.mobileObjects.Bomb;
 import objects.mobileObjects.Cup;
@@ -58,16 +57,8 @@ public class Room {
 		return gameObj;
 	}
 
-	public boolean isOutOfBounds(Point2D p){
-
-		List<GameObject> objs = getObjectsAt(p);
-		for(GameObject obj : objs){
-			if(obj instanceof Wall){
-				return false;
-			}
-		}
-		return true;
-
+	public List<GameObject> getObjects(){
+		return objects;
 	}
 	
 

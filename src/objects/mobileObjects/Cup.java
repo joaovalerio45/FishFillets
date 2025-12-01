@@ -19,9 +19,11 @@ public class Cup extends MobileObject {
 
 	@Override
 	public boolean interact(GameObject object, Direction direction, Room room) {
-		return move((GameCharacter)object, direction, room);
+		if(object instanceof GameCharacter){
+			return move((GameCharacter)object, direction, room);
+		}
+		return false;
 	}
-
 	
 
 
