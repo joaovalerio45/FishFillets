@@ -21,11 +21,11 @@ public Trap(Point2D p) {
 	}
 
 
-	public boolean interact(GameCharacter fish, Direction direction, Room room){
-		if(fish instanceof BigFish){
-			fish.kill(room);
+	public boolean interact(GameObject object, Direction direction, Room room){
+		if(object instanceof BigFish){
+			((GameCharacter) object).kill(room);
 			return false;
-		}else if(fish instanceof SmallFish){
+		}else if(object instanceof SmallFish){
 			return true;
 		}
 		return false;
