@@ -1,5 +1,6 @@
 package objects;
 
+import objects.interfaces.Movable;
 import pt.iscte.poo.utils.Point2D;
 
 //decidir se adicionamos room aos parametros do movable e do interactable para saber se a posicao para a qual o objeto vai esta vazia
@@ -7,12 +8,15 @@ import pt.iscte.poo.utils.Point2D;
 //e sempre que for preciso matar um dos peixes em alguma das interacoes é so invocar o kill
 
 
-public abstract class MobileObject extends GameObject{
+public abstract class MobileObject extends GameObject implements Movable{
     
 	public MobileObject(Point2D position) {
 		super(position);
 	}
 
+	public boolean isHeavy(){
+		return false;
+	}
 	
 	public void sink(){
 		

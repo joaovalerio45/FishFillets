@@ -1,23 +1,23 @@
-package objects;
+package objects.fixedObjects;
 
+import objects.*;
 import pt.iscte.poo.game.Room;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
-public class Stone extends MobileObject {
-    public Stone(Point2D p) {
+public class HorizontalSteel extends FixedObject{
+public HorizontalSteel(Point2D p) {
 		super(p);
 	}
 	
 	@Override
 	public String getName() {
-		return "stone";
+		return "steelHorizontal";
 	}
-
 
 	@Override
 	public boolean interact(GameCharacter fish, Direction direction, Room room) {
-		return true;
+		return false;
 	}
 
 }

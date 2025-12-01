@@ -1,5 +1,6 @@
-package objects;
+package objects.mobileObjects;
 
+import objects.*;
 import pt.iscte.poo.game.Room;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
@@ -13,6 +14,11 @@ public class Anchor extends MobileObject{
 		this.hasMovedOnce = false;
 	}
 
+
+	@Override
+	public boolean isHeavy(){
+		return true;
+	}
 	
 	@Override
 	public String getName() {
@@ -39,6 +45,13 @@ public class Anchor extends MobileObject{
 			}
 		}
 		return false;
+	}
+
+
+	@Override
+	public boolean move(GameCharacter fish, Direction direction, Room room) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'move'");
 	}
 
 

@@ -1,22 +1,23 @@
-package objects;
+package objects.fixedObjects;
 
+import objects.*;
 import pt.iscte.poo.game.Room;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
-public class Trunk extends FixedObject {
-public Trunk(Point2D p) {
+public class VerticalSteel extends FixedObject{
+public VerticalSteel(Point2D p) {
 		super(p);
 	}
 	
 	@Override
 	public String getName() {
-		return "trunk";
+		return "steelHorizontal";
 	}
 
 	@Override
 	public boolean interact(GameCharacter fish, Direction direction, Room room) {
-		return true;
+		return false;
 	}
-	
+
 }
