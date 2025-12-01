@@ -28,30 +28,28 @@ public class Anchor extends MobileObject{
 
 	@Override
 	public boolean interact(GameObject object, Direction direction, Room room) {
+		if (object instanceof BigFish) {
+            return move((GameCharacter) object, direction, room);
+        }
+        return false;
+	}
 
+
+	@Override
+	public boolean move(GameCharacter fish, Direction direction, Room room) {
 		if (direction == Direction.UP || direction == Direction.DOWN) {
                 return false;
         }
 
-		if(object instanceof SmallFish){
+		if(hasMovedOnce){
 			return false;
-		}else if(object instanceof BigFish){
-			if(hasMovedOnce){
-				return false;
-			}else{
+		}else{
 				this.setPosition(getPosition().plus(direction.asVector()));
 				hasMovedOnce = true;
 				return true;
 			}
 		}
 		return false;
-	}
-
-
-	@Override
-	public boolean move(GameCharacter fish, Direction direction, Room room) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'move'");
 	}
 
 

@@ -27,10 +27,6 @@ public class Buoy extends MobileObject{
         return true;
     }
 
-    @Override
-    public boolean move(GameCharacter fish, Direction direction, Room room) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'move'");
-    }
+    
 
 }
