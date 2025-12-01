@@ -43,14 +43,13 @@ public class Anchor extends MobileObject{
 
 		if(hasMovedOnce){
 			return false;
-		}else{
-				this.setPosition(getPosition().plus(direction.asVector()));
-				hasMovedOnce = true;
-				return true;
-			}
+		}
+		
+		if(super.move(fish, direction, room) && fish != null){
+			hasMovedOnce = true;
+			return true;
 		}
 		return false;
 	}
-
 
 }
