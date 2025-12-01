@@ -70,8 +70,6 @@ public class Room {
 		return true;
 
 	}
-
-
 	
 
 
