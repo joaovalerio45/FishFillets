@@ -37,9 +37,16 @@ public abstract class MobileObject extends GameObject implements Movable,Tickabl
         }
 
         for(GameObject obj : objects){
+
+            if (obj.isTraversable(this)) {
+                setPosition(nextPos);
+                return true;
+            }
+
             if(!(obj instanceof MobileObject)){
                 return false;
             }
+            
             if(fish instanceof BigFish){
                 MobileObject nextMobile = (MobileObject) obj;
                 if(nextMobile.move(fish, direction, room)){
