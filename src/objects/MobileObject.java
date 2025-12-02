@@ -20,7 +20,7 @@ public abstract class MobileObject extends GameObject implements Movable,Tickabl
 	}
 
     public boolean interact(GameObject object, Direction direction, Room room){
-        return this.move((GameCharacter) object, direction, room);
+        return move((GameCharacter) object, direction, room);
     }
     
 	public boolean move(GameCharacter fish, Direction direction, Room room) {
@@ -38,15 +38,18 @@ public abstract class MobileObject extends GameObject implements Movable,Tickabl
             if(!(obj instanceof MobileObject)){
                 return false;
             }
-            if(fish != null && fish.canPush(room, direction, obj)){
+            if(fish != null && fish.canPush(room,direction, obj)){
                 MobileObject nextMobile = (MobileObject) obj;
-                nextMobile.move(fish, direction, room);
+                if(nextMobile.move(fish, direction, room)){
+                    this.setPosition(nextPos);
+                    return true;
+                }
             }
             return false;
         }
         this.setPosition(nextPos);
         return true;
-	}
+    }
 
 	@Override
 	public void tickAction(Room room) {

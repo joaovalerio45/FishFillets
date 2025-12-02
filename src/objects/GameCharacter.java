@@ -44,9 +44,7 @@ public abstract class GameCharacter extends GameObject {
 		return false;
 	}
 
-	public boolean canPush(Room room ,Direction direction, GameObject object){
-		return true;
-	}
+	public abstract boolean canPush(Room room ,Direction direction, GameObject object);
 
 	
 	
