@@ -20,7 +20,6 @@ public class BigFish extends GameCharacter {
 		
 	}
 
-	@Override
 	public boolean canPush(Room room, Direction direction, GameObject obj){
 		if(direction == Direction.DOWN || direction == Direction.UP){
 			if(!room.getObjectsAt(obj.getPosition().plus(direction.asVector())).isEmpty()){
