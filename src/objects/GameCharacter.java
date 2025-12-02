@@ -31,6 +31,7 @@ public abstract class GameCharacter extends GameObject {
 
 	public void kill(Room room){
 		room.removeObject(this);
+		room.switchActiveFish();
 	}
 
 	@Override
