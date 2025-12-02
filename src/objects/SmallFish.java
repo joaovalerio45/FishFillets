@@ -2,6 +2,8 @@ package objects;
 
 
 
+import java.util.List;
+
 import pt.iscte.poo.game.Room;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
@@ -29,5 +31,18 @@ public class SmallFish extends GameCharacter {
 		}
 		return true;
 	}
+
+	@Override
+    public boolean isKilled(List<MobileObject> stack){
+        if(stack.size() > 1){
+            return true;
+        }
+        for(MobileObject obj : stack){
+            if(obj.isHeavy()){
+                return true;
+            }
+        }
+        return false;
+    }
 	
 }

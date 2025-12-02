@@ -2,6 +2,7 @@ package pt.iscte.poo.game;
 
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import objects.GameObject;
@@ -67,11 +68,14 @@ public class GameEngine implements Observer {
 	}
 
 	private void processTick() {
-		for(GameObject obj : currentRoom.getObjects()){
+
+		List<GameObject> objectsCopy = new ArrayList<>(currentRoom.getObjects());
+		for(GameObject obj : objectsCopy){
 			if(obj instanceof Tickable){
 				((Tickable)obj).tickAction(currentRoom);
 			}
 		}
+		
 		lastTickProcessed++;
 	}	
 }
