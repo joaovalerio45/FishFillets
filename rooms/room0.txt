@@ -1,10 +1,10 @@
 WWWWWWWWWW
 W        W
 W  HHH   W
-W        W
-W    WXWWW
-W    T
-W    W   W
+W   C    W
+W   CWXWWW
+W    T 
+W R  W   W
 W        W
 W B S    W
 WWWWWWWWWW

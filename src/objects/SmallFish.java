@@ -34,7 +34,9 @@ public class SmallFish extends GameCharacter {
 
 
 	public void kill(Room room){
-		room.switchActiveFish();
+		if(this.equals(room.getActiveFish())){
+			room.switchActiveFish();
+		}
 		room.removeObject(this);
 		room.setSmallFish(null);
 	}

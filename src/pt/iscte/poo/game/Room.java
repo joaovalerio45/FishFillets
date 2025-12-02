@@ -7,12 +7,13 @@ import java.util.List;
 import java.util.Scanner;
 
 import objects.fixedObjects.*;
+import objects.interfaces.Tickable;
 import objects.mobileObjects.*;
 import objects.*;
 import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.utils.Point2D;
 
-public class Room {
+public class Room implements Tickable{
 	
 	private List<GameObject> objects;
 	private List<GameCharacter> fishes;
@@ -33,6 +34,10 @@ public class Room {
 	
 	public String getName() {
 		return roomName;
+	}
+
+	public List<GameCharacter> getFishes(){
+		return fishes;
 	}
 
 	public List<GameObject> getObjectsAt(Point2D position) {
@@ -59,6 +64,9 @@ public class Room {
 	
 	public void removeObject(GameObject obj) {
 		objects.remove(obj);
+		if(obj instanceof GameCharacter){
+			fishes.remove(obj);
+		}
 		ImageGUI.getInstance().removeImage(obj);
 	}
 
@@ -89,11 +97,14 @@ public class Room {
 	}
 
 	public void switchActiveFish(){
-		if(activeFish == getBigFish()){
-			activeFish = getSmallFish();
-		}else if(activeFish == getSmallFish()){
-			activeFish = getBigFish();
+		if (fishes.isEmpty()){
+			return;
 		}
+
+    	int currentIndex = fishes.indexOf(activeFish);
+    	int nextIndex = (currentIndex + 1) % fishes.size();
+
+    	setActiveFish(fishes.get(nextIndex));
 	}
 	
 	public static Room readRoom(File f) {
@@ -174,13 +185,26 @@ public class Room {
 
 
 			}
-			r.setActiveFish(r.getBigFish());
+			r.setActiveFish(r.fishes.get(0));
 			sc.close();
 		} catch (FileNotFoundException e) {
 			System.err.println("Ficheiro não Encontrado");
 		}
 		
 		return r;	
+	}
+
+	@Override
+	public void tickAction(Room room) {
+		// verificar se o nível acabou
+
+		if(true){
+			finishLevel();
+		}
+	}
+
+	private void finishLevel() {
+		
 	}
 
 }

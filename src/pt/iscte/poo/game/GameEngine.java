@@ -56,7 +56,7 @@ public class GameEngine implements Observer {
 				currentRoom.switchActiveFish();
 			}
 			if(k == KeyEvent.VK_R){
-				
+				restartGame();
 			}
 		}
 
@@ -77,5 +77,10 @@ public class GameEngine implements Observer {
 		}
 		
 		lastTickProcessed++;
-	}	
+	}
+	
+	private void restartGame() {
+		ImageGUI.getInstance().clearImages();
+		currentRoom = Room.readRoom(new File("./rooms/room0.txt"));
+}	
 }
