@@ -91,8 +91,7 @@ public class Room {
 	public void switchActiveFish(){
 		if(activeFish == getBigFish()){
 			activeFish = getSmallFish();
-		}
-		if(activeFish == getSmallFish()){
+		}else if(activeFish == getSmallFish()){
 			activeFish = getBigFish();
 		}
 	}
