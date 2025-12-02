@@ -20,8 +20,5 @@ public class BigFish extends GameCharacter {
 		
 	}
 
-	@Override
-	public boolean interact(GameObject object, Direction direction, Room room) {
-		return true;
-	}
+
 }

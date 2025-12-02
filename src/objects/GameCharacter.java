@@ -43,5 +43,11 @@ public abstract class GameCharacter extends GameObject {
 	public boolean interact(GameObject object, Direction direction, Room room) {
 		return false;
 	}
+
+	public boolean canPush(Direction direction, GameObject object){
+		return true;
+	}
+
+	
 	
 }

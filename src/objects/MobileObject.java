@@ -24,30 +24,21 @@ public abstract class MobileObject extends GameObject implements Movable,Tickabl
     }
     
 	public boolean move(GameCharacter fish, Direction direction, Room room) {
-		if(this.isHeavy() && fish instanceof SmallFish){
-            return false;
-        }
         Point2D nextPos = getPosition().plus(direction.asVector());
 
         List<GameObject> objects = room.getObjectsAt(nextPos);
 
-        if(objects.isEmpty()){
-            this.setPosition(nextPos);
-            return true;
-        }
 
         for(GameObject obj : objects){
 
             if (obj.isTraversable(this)) {
-                setPosition(nextPos);
-                return true;
+                continue;
             }
 
             if(!(obj instanceof MobileObject)){
                 return false;
             }
-            
-            if(fish instanceof BigFish){
+            if(fish.canPush(direction, obj)){
                 MobileObject nextMobile = (MobileObject) obj;
                 if(nextMobile.move(fish, direction, room)){
                     this.setPosition(nextPos);
@@ -56,7 +47,8 @@ public abstract class MobileObject extends GameObject implements Movable,Tickabl
             }
             return false;
         }
-        return false;
+        this.setPosition(nextPos);
+        return true;
 	}
 
 	@Override
