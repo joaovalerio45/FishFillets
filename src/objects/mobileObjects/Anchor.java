@@ -37,6 +37,10 @@ public class Anchor extends MobileObject{
 
 	@Override
 	public boolean move(GameCharacter fish, Direction direction, Room room) {
+		if(fish == null){
+			return super.move(fish, direction, room);
+		}
+		
 		if (direction == Direction.UP || direction == Direction.DOWN) {
                 return false;
         }

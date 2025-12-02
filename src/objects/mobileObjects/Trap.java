@@ -24,25 +24,11 @@ public Trap(Point2D p) {
 	public boolean interact(GameObject object, Direction direction, Room room){
 		if(object instanceof BigFish){
 			((GameCharacter) object).kill(room);
+			room.switchActiveFish();
 			return false;
 		}else if(object instanceof SmallFish){
 			return true;
 		}
 		return false;
 	}
-
-	@Override
-	public boolean move(GameCharacter fish, Direction direction, Room room) {
-		Point2D to = getPosition().plus(direction.asVector());
-		if(fish == null && direction == Direction.DOWN){
-			if(room.getObjectsAt(to).isEmpty()){
-				setPosition(to);
-				return true;
-			}
-		}
-		return false;
-	}
-
-
-
 }

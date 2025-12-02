@@ -19,6 +19,10 @@ public abstract class MobileObject extends GameObject implements Movable,Tickabl
 		super(position);
 	}
 
+    public boolean interact(GameObject object, Direction direction, Room room){
+        return move((GameCharacter) object, direction, room);
+    }
+    
 	public boolean move(GameCharacter fish, Direction direction, Room room) {
 		if(this.isHeavy() && fish instanceof SmallFish){
             return false;

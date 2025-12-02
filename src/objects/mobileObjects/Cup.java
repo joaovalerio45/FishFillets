@@ -15,16 +15,4 @@ public class Cup extends MobileObject {
 	public String getName() {
 		return "cup";
 	}
-
-
-	@Override
-	public boolean interact(GameObject object, Direction direction, Room room) {
-		if(object instanceof GameCharacter){
-			return move((GameCharacter)object, direction, room);
-		}
-		return false;
-	}
-	
-
-
 }

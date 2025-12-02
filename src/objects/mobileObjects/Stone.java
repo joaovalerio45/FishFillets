@@ -18,11 +18,4 @@ public class Stone extends MobileObject {
 	public boolean isHeavy() {
 		return true;
 	}
-	@Override
-	public boolean interact(GameObject object, Direction direction, Room room) {
-		if(object instanceof BigFish){
-			return true;
-		}
-		return false;
-	}
 }
