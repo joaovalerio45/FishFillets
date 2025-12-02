@@ -37,18 +37,20 @@ public class GameEngine implements Observer {
 				Point2D to = currentRoom.getActiveFish().getPosition().plus(Direction.directionFor(k).asVector());
 				List<GameObject> objs = currentRoom.getObjectsAt(to);
 
-				if(objs.isEmpty()){
-					currentRoom.getActiveFish().moveFish(Direction.directionFor(k).asVector());
-				}else{
+				boolean canMove = true;
+
 					for(GameObject obj : objs){
-						if(obj.interact(currentRoom.activeFish, Direction.directionFor(k), currentRoom))
-							currentRoom.getActiveFish().moveFish(Direction.directionFor(k).asVector());
+						if(!obj.interact(currentRoom.getActiveFish(), Direction.directionFor(k), currentRoom)){
+							canMove = false;
+							break;
+						}
 					}
+				
+				if(canMove){
+					currentRoom.getActiveFish().moveFish(Direction.directionFor(k).asVector());
 				}
-
-
-
 			}
+
 			if(k == KeyEvent.VK_SPACE){
 				currentRoom.switchActiveFish();
 			}

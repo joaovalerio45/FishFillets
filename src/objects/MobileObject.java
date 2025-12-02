@@ -20,33 +20,31 @@ public abstract class MobileObject extends GameObject implements Movable,Tickabl
 	}
 
 	public boolean move(GameCharacter fish, Direction direction, Room room) {
-		Point2D to = getPosition().plus(direction.asVector());
-        List<GameObject> targetObjs = room.getObjectsAt(to);
+		if(this.isHeavy() && fish instanceof SmallFish){
+            return false;
+        }
+        Point2D nextPos = getPosition().plus(direction.asVector());
 
+        List<GameObject> objects = room.getObjectsAt(nextPos);
 
-        if (targetObjs.isEmpty()) {
-            setPosition(to);
+        if(objects.isEmpty()){
+            this.setPosition(nextPos);
             return true;
         }
 
-        GameObject obstacle = targetObjs.get(0);
-
-        if (obstacle.isTraversable(this)) {
-            setPosition(to);
-            return true;
-        }
-
-        if (obstacle instanceof Movable) {
-            if (fish == null || fish instanceof SmallFish){
-				return false;
-			}
-
-            if (((Movable) obstacle).move(fish,direction,room)) {
-                setPosition(to);
-                return true;
+        for(GameObject obj : objects){
+            if(!(obj instanceof MobileObject)){
+                return false;
             }
+            if(fish instanceof BigFish){
+                MobileObject nextMobile = (MobileObject) obj;
+                if(nextMobile.move(fish, direction, room)){
+                    this.setPosition(nextPos);
+                    return true;
+                }
+            }
+            return false;
         }
-        
         return false;
 	}
 
