@@ -21,11 +21,5 @@ public class Krab extends MobileObject {
     public boolean interact(GameObject object, Direction direction, Room room) {
         return true;
     }
-
-    @Override
-    public boolean move(GameCharacter fish, Direction direction, Room room) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'move'");
-    }
-    
+  
 }
