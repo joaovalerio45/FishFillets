@@ -32,6 +32,13 @@ public class SmallFish extends GameCharacter {
 		return true;
 	}
 
+
+	public void kill(Room room){
+		room.switchActiveFish();
+		room.removeObject(this);
+		room.setSmallFish(null);
+	}
+
 	@Override
     public boolean isKilled(List<MobileObject> stack){
         if(stack.size() > 1){

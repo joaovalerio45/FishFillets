@@ -31,6 +31,12 @@ public class BigFish extends GameCharacter {
 		return true;
 	}
 
+	public void kill(Room room){
+		room.switchActiveFish();
+		room.removeObject(this);
+		room.setBigFish(null);
+	}
+
 	@Override
     public boolean isKilled(List<MobileObject> stack){
         int heavyCount = 0;

@@ -5,9 +5,7 @@ import java.util.List;
 
 import objects.interfaces.Tickable;
 import pt.iscte.poo.game.Room;
-import pt.iscte.poo.utils.Direction;
-import pt.iscte.poo.utils.Point2D;
-import pt.iscte.poo.utils.Vector2D;
+import pt.iscte.poo.utils.*;
 
 public abstract class GameCharacter extends GameObject implements Tickable {
 
@@ -33,10 +31,6 @@ public abstract class GameCharacter extends GameObject implements Tickable {
 		setPosition(getPosition().plus(dir));	
 	}
 
-	public void kill(Room room){
-		room.removeObject(this);
-		room.switchActiveFish();
-	}
 
 	@Override
 	public int getLayer() {
@@ -48,7 +42,6 @@ public abstract class GameCharacter extends GameObject implements Tickable {
 		return false;
 	}
 
-	public abstract boolean canPush(Room room ,Direction direction, GameObject object);
 
 	public void checkKilling(Room room){
         List<MobileObject> stack = new ArrayList<>();
@@ -76,17 +69,20 @@ public abstract class GameCharacter extends GameObject implements Tickable {
 
             currentPos = currentPos.plus(Direction.UP.asVector());
         }
-        if(isKilled(stack)){
-            kill(room);
+        if(this.isKilled(stack)){
+            this.kill(room);
         }
     }
 	
-	public boolean isKilled(List<MobileObject> stack){
-		return false;
-	}
+	
 
 	@Override
     public void tickAction(Room room){
-        checkKilling(room);
+        this.checkKilling(room);
     }
+
+
+	public abstract boolean isKilled(List<MobileObject> stack);
+	public abstract void kill(Room room);
+	public abstract boolean canPush(Room room ,Direction direction, GameObject object);
 }

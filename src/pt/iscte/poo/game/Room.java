@@ -6,21 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import objects.fixedObjects.HoledWall;
-import objects.fixedObjects.HorizontalSteel;
-import objects.fixedObjects.Trunk;
-import objects.fixedObjects.VerticalSteel;
-import objects.fixedObjects.Wall;
-import objects.fixedObjects.Water;
-import objects.mobileObjects.Anchor;
-import objects.mobileObjects.Bomb;
-import objects.mobileObjects.Cup;
-import objects.mobileObjects.Stone;
-import objects.mobileObjects.Trap;
-import objects.BigFish;
-import objects.GameCharacter;
-import objects.GameObject;
-import objects.SmallFish;
+import objects.fixedObjects.*;
+import objects.mobileObjects.*;
+import objects.*;
 import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.utils.Point2D;
 

@@ -1,8 +1,7 @@
 package objects.mobileObjects;
 
 import objects.*;
-import pt.iscte.poo.game.Room;
-import pt.iscte.poo.utils.Direction;
+
 import pt.iscte.poo.utils.Point2D;
 
 public class Stone extends MobileObject {
