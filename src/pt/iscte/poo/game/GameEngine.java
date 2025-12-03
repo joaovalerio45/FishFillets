@@ -33,9 +33,7 @@ public class GameEngine implements Observer {
         if(nextRoomFile.exists()){
             ImageGUI.getInstance().clearImages();
             currentRoom = Room.readRoom(nextRoomFile);
-			ImageGUI.getInstance().setStatusMessage("Nível " + levelNumber);
         } else {
-			ImageGUI.getInstance().showMessage("Vitória", "Parabéns! Terminaste o jogo.");
             System.exit(0);
         }
     }
