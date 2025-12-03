@@ -43,4 +43,8 @@ public abstract class GameObject implements ImageTile, Interactable{
 		return false;
 	}
 
+	public boolean isEnemy(){
+		return false;
+	}
+
 }

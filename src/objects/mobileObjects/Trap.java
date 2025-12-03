@@ -27,6 +27,8 @@ public Trap(Point2D p) {
 			return false;
 		}else if(object instanceof SmallFish){
 			return true;
+		}else if (object instanceof Krab){
+			room.removeObject(object);
 		}
 		return false;
 	}

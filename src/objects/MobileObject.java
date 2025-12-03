@@ -74,6 +74,11 @@ public abstract class MobileObject extends GameObject implements Movable,Tickabl
 
 
 	}
+
+    
+    public void fishMoveAction(Room room) {
+
+    }
 	
 	
 	

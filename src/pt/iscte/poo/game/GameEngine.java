@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import objects.GameObject;
+import objects.MobileObject;
 import objects.interfaces.Tickable;
 import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.observer.Observed;
@@ -49,6 +50,7 @@ public class GameEngine implements Observer {
 				
 				if(canMove){
 					currentRoom.getActiveFish().moveFish(Direction.directionFor(k).asVector());
+					fishMoveActionEnable();
 				}
 			}
 
@@ -65,6 +67,14 @@ public class GameEngine implements Observer {
 			processTick();
 		}
 		ImageGUI.getInstance().update();
+	}
+
+	private void fishMoveActionEnable() {
+		for(GameObject obj : currentRoom.getObjects()){
+			if(obj instanceof MobileObject && obj.isEnemy()){
+				((MobileObject)obj).fishMoveAction(currentRoom);
+			}
+		}
 	}
 
 	private void processTick() {
