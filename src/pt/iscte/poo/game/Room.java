@@ -180,7 +180,12 @@ public class Room implements Tickable{
 					if(letter == 'X'){
 						r.addObject(new HoledWall(new Point2D(i,y)));
 					}
-
+					if(letter == 'F'){
+						r.addObject(new Buoy(new Point2D(i,y)));
+					}
+					if(letter == 'K'){
+						r.addObject(new Krab(new Point2D(i,y)));
+					}
 				}
 
 
