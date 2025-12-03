@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Random;
 
 import objects.*;
-import objects.interfaces.Tickable;
 import pt.iscte.poo.game.Room;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
