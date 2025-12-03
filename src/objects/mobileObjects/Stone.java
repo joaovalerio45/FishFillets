@@ -1,6 +1,6 @@
 package objects.mobileObjects;
 
-import java.awt.Dimension;
+
 import java.util.List;
 
 import objects.*;
@@ -10,7 +10,7 @@ import pt.iscte.poo.utils.Point2D;
 
 public class Stone extends MobileObject {
 
-	boolean hasKrab = false;
+	int hasKrab = 0;
     
 	public Stone(Point2D p) {
 		super(p);
@@ -52,7 +52,7 @@ public class Stone extends MobileObject {
                 if(nextMobile.move(fish, direction, room)){
                     this.setPosition(nextPos);
 					if(direction.equals(Direction.LEFT) || direction.equals(Direction.RIGHT)){
-						hasKrab = true;
+						hasKrab++;
 					}
                     return true;
                 }
@@ -61,7 +61,7 @@ public class Stone extends MobileObject {
         }
         this.setPosition(nextPos);
 		if(direction.equals(Direction.LEFT) || direction.equals(Direction.RIGHT)){
-			hasKrab = true;
+			hasKrab++;
 		}
         return true;
     }
@@ -71,7 +71,8 @@ public class Stone extends MobileObject {
 
 		move(null, Direction.DOWN, room);
 
-		if(hasKrab){
+		if(hasKrab == 1 && room.getObjectsAt(getPosition().plus(Direction.UP.asVector())).isEmpty()){
+			hasKrab = 2;
 			room.addObject(new Krab(getPosition().plus(Direction.UP.asVector())));
 		}
 
