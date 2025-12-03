@@ -1,13 +1,22 @@
 package objects.mobileObjects;
 
-import objects.*;
+import java.awt.Dimension;
+import java.util.List;
 
+import objects.*;
+import pt.iscte.poo.game.Room;
+import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
 public class Stone extends MobileObject {
-    public Stone(Point2D p) {
+
+	boolean hasKrab = false;
+    
+	public Stone(Point2D p) {
 		super(p);
 	}
+	
+
 	
 	@Override
 	public String getName() {
@@ -16,5 +25,56 @@ public class Stone extends MobileObject {
 
 	public boolean isHeavy() {
 		return true;
+	}
+
+	@Override
+	public boolean move(GameCharacter fish, Direction direction, Room room) {
+        Point2D nextPos = getPosition().plus(direction.asVector());
+
+        List<GameObject> objects = room.getObjectsAt(nextPos);
+
+
+        for(GameObject obj : objects){
+
+            if (obj.interact(this, direction, room)) {
+                continue;
+            }
+
+            if (obj.isTraversable(this)) {
+                continue;
+            }
+
+            if(!(obj instanceof MobileObject)){
+                return false;
+            }
+            if(fish != null && fish.canPush(room,direction, obj)){
+                MobileObject nextMobile = (MobileObject) obj;
+                if(nextMobile.move(fish, direction, room)){
+                    this.setPosition(nextPos);
+					if(direction.equals(Direction.LEFT) || direction.equals(Direction.RIGHT)){
+						hasKrab = true;
+					}
+                    return true;
+                }
+            }
+            return false;
+        }
+        this.setPosition(nextPos);
+		if(direction.equals(Direction.LEFT) || direction.equals(Direction.RIGHT)){
+			hasKrab = true;
+		}
+        return true;
+    }
+
+	@Override
+	public void tickAction(Room room) {
+
+		move(null, Direction.DOWN, room);
+
+		if(hasKrab){
+			room.addObject(new Krab(getPosition().plus(Direction.UP.asVector())));
+		}
+
+
 	}
 }

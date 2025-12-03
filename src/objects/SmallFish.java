@@ -24,6 +24,11 @@ public class SmallFish extends GameCharacter {
 		
 	}
 
+	@Override
+	public boolean isSmall(){
+		return true;
+	}
+
 	public boolean canPush(Room room, Direction direction, GameObject obj){
 		
 		if(!room.getObjectsAt(obj.getPosition().plus(direction.asVector())).isEmpty() || obj.isHeavy()){

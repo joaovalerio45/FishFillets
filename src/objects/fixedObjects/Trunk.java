@@ -19,8 +19,9 @@ public Trunk(Point2D p) {
 
 	@Override
 	public boolean interact(GameObject object, Direction direction, Room room) {
-		if(direction.equals(Direction.DOWN) && .isHeavy()){
-			room.removeObject(object);
+		if(direction.equals(Direction.DOWN) && object.isHeavy()){
+			room.removeObject(this);
+			return true;
 		}
 		return false;
 	}

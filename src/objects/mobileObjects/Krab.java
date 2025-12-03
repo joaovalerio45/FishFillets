@@ -18,8 +18,13 @@ public class Krab extends MobileObject {
     }
 
     @Override
+	public boolean isSmall(){
+		return true;
+	}
+
+    @Override
     public boolean interact(GameObject object, Direction direction, Room room) {
-        return true;
+        return false;
     }
   
 }

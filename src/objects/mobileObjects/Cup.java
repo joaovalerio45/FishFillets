@@ -14,4 +14,9 @@ public class Cup extends MobileObject {
 	public String getName() {
 		return "cup";
 	}
+
+	@Override
+	public boolean isSmall(){
+		return true;
+	}
 }
