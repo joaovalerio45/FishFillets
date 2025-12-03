@@ -10,6 +10,6 @@ public VerticalSteel(Point2D p) {
 	
 	@Override
 	public String getName() {
-		return "steelHorizontal";
+		return "steelVertical";
 	}
 }

@@ -35,10 +35,6 @@ public abstract class GameObject implements ImageTile, Interactable{
 		return false;
 	}
 
-	public boolean isCrushable() {
-    	return false;
-	}
-
 	public boolean isTraversable(GameObject obj){
 		return false;
 	}

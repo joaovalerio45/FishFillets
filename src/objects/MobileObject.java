@@ -57,6 +57,7 @@ public abstract class MobileObject extends GameObject implements Movable,Tickabl
             return false;
         }
         this.setPosition(nextPos);
+        this.interact(null, direction, room);
         return true;
     }
 

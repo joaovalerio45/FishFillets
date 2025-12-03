@@ -16,13 +16,12 @@ public Trunk(Point2D p) {
 	}
 
 
-	@Override
-	public boolean isCrushable() {
-    	return false;
-	}
 
 	@Override
 	public boolean interact(GameObject object, Direction direction, Room room) {
+		if(direction.equals(Direction.DOWN) && .isHeavy()){
+			room.removeObject(object);
+		}
 		return false;
 	}
 	
