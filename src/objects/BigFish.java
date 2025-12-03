@@ -36,7 +36,6 @@ public class BigFish extends GameCharacter {
 			room.switchActiveFish();
 		}
 		room.removeObject(this);
-		room.setBigFish(null);
 	}
 
 	@Override

@@ -38,7 +38,6 @@ public class SmallFish extends GameCharacter {
 			room.switchActiveFish();
 		}
 		room.removeObject(this);
-		room.setSmallFish(null);
 	}
 
 	@Override
