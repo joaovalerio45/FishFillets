@@ -18,6 +18,7 @@ public class GameEngine implements Observer {
 	
 	private Room currentRoom;
 	private int lastTickProcessed = 0;
+	private int levelNumber = 0;
 	
 	public GameEngine() {				
 	}
@@ -25,6 +26,19 @@ public class GameEngine implements Observer {
 	public void startGame() {
 		currentRoom = Room.readRoom(new File("./rooms/room0.txt"));
 	}
+
+	private void nextLevel() {
+        levelNumber++;
+        File nextRoomFile = new File("rooms/room" + levelNumber + ".txt");
+        if(nextRoomFile.exists()){
+            ImageGUI.getInstance().clearImages();
+            currentRoom = Room.readRoom(nextRoomFile);
+			ImageGUI.getInstance().setStatusMessage("Nível " + levelNumber);
+        } else {
+			ImageGUI.getInstance().showMessage("Vitória", "Parabéns! Terminaste o jogo.");
+            System.exit(0);
+        }
+    }
 
 	@Override
 	public void update(Observed source) {
@@ -51,6 +65,12 @@ public class GameEngine implements Observer {
 				if(canMove){
 					currentRoom.getActiveFish().moveFish(Direction.directionFor(k).asVector());
 					fishMoveActionEnable();
+
+					currentRoom.checkExits();
+                
+                if (currentRoom.getFishes().isEmpty()) {
+                    nextLevel();
+                }
 				}
 			}
 
@@ -92,5 +112,6 @@ public class GameEngine implements Observer {
 	private void restartGame() {
 		ImageGUI.getInstance().clearImages();
 		currentRoom = Room.readRoom(new File("./rooms/room0.txt"));
-}	
+	}	
+
 }

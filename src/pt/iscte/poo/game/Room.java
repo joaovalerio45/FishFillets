@@ -211,5 +211,16 @@ public class Room implements Tickable{
 	private void finishLevel() {
 		
 	}
-
+	public void checkExits() {
+		List<GameCharacter> fishesCopy = new ArrayList<>(fishes);
+        for(GameCharacter fish : fishesCopy){
+            Point2D p = fish.getPosition();
+            if(p.getX() == 0 || p.getX() == 9 || p.getY() == 0 || p.getY() == 9) {
+                if(activeFish == fish){
+                    switchActiveFish();
+                }
+                removeObject(fish);
+            }
+        }
+    }
 }
