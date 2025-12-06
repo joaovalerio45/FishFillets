@@ -24,7 +24,6 @@ public Trap(Point2D p) {
 	public boolean interact(GameObject object, Direction direction, Room room){
 		if(object instanceof BigFish){
 			((GameCharacter) object).kill(room);
-			return false;
 		}else if(object instanceof SmallFish){
 			return true;
 		}else if (object instanceof Krab){

@@ -23,7 +23,7 @@ public class Buoy extends MobileObject{
         if (object instanceof GameCharacter) {
             GameCharacter fish = (GameCharacter) object;
         
-            if (fish instanceof SmallFish || !fish.canPush(room, direction, this)) {
+            if (((direction == Direction.UP || direction == Direction.DOWN) && fish instanceof SmallFish) || !fish.canPush(room, direction, this)) {
                 return false;
             }
         

@@ -19,24 +19,28 @@ public class GameEngine implements Observer {
 	private Room currentRoom;
 	private int lastTickProcessed = 0;
 	private int levelNumber = 0;
+	private int fishNumber = 0;
+
+	private long startSeconds;
+	private int moves;
 	
 	public GameEngine() {				
 	}
 	
 	public void startGame() {
 		currentRoom = Room.readRoom(new File("./rooms/room0.txt"));
+		fishNumber = currentRoom.getFishes().size();
+		startSeconds = System.currentTimeMillis();
+		moves = 0;
+
 	}
 
-	private void nextLevel() {
-        levelNumber++;
-        File nextRoomFile = new File("rooms/room" + levelNumber + ".txt");
-        if(nextRoomFile.exists()){
-            ImageGUI.getInstance().clearImages();
-            currentRoom = Room.readRoom(nextRoomFile);
-        } else {
-            System.exit(0);
-        }
-    }
+	private void updateStatus() {
+    long elapsedMillis = System.currentTimeMillis() - startSeconds;
+    int secondsCount = (int) elapsedMillis / 1000;
+    
+    ImageGUI.getInstance().setStatusMessage("Moves: " + moves + " Time: " + secondsCount + " seconds");
+	}
 
 	@Override
 	public void update(Observed source) {
@@ -64,11 +68,14 @@ public class GameEngine implements Observer {
 					currentRoom.getActiveFish().moveFish(Direction.directionFor(k).asVector());
 					fishMoveActionEnable();
 
-					currentRoom.checkExits();
-                
-                if (currentRoom.getFishes().isEmpty()) {
-                    nextLevel();
-                }
+					currentRoom.checkExits(); 
+					int fishesAfter = currentRoom.getFishes().size();
+
+					if (fishesAfter < fishNumber) {
+						fishNumber = fishesAfter; 
+					}
+					moves++;
+					updateStatus();
 				}
 			}
 
@@ -76,7 +83,7 @@ public class GameEngine implements Observer {
 				currentRoom.switchActiveFish();
 			}
 			if(k == KeyEvent.VK_R){
-				restartGame();
+				restartLevel();
 			}
 		}
 
@@ -88,7 +95,9 @@ public class GameEngine implements Observer {
 	}
 
 	private void fishMoveActionEnable() {
-		for(GameObject obj : currentRoom.getObjects()){
+		List<GameObject> objectsCopy = new ArrayList<>(currentRoom.getObjects());
+
+		for(GameObject obj : objectsCopy){
 			if(obj instanceof MobileObject && obj.isEnemy()){
 				((MobileObject)obj).fishMoveAction(currentRoom);
 			}
@@ -103,13 +112,47 @@ public class GameEngine implements Observer {
 				((Tickable)obj).tickAction(currentRoom);
 			}
 		}
+		if(currentRoom.getFishes().size() < fishNumber){
+			ImageGUI.getInstance().showMessage("Perdeste :(", "Clica em OK para tentares de novo!");
+			restartLevel();
+		}
+
+		if (currentRoom.getFishes().isEmpty()) {
+			nextLevel();
+		}
+
+		updateStatus();
+
 		
 		lastTickProcessed++;
 	}
-	
-	private void restartGame() {
-		ImageGUI.getInstance().clearImages();
-		currentRoom = Room.readRoom(new File("./rooms/room0.txt"));
-	}	
 
+	private void nextLevel() {
+        levelNumber++;
+        File nextRoomFile = new File("rooms/room" + levelNumber + ".txt");
+        if(nextRoomFile.exists()){
+            ImageGUI.getInstance().clearImages();
+            currentRoom = Room.readRoom(nextRoomFile);
+        } else {
+			finishGame();
+        }
+    }
+	
+	
+	private void restartLevel(){
+		ImageGUI.getInstance().clearImages();
+        currentRoom = Room.readRoom(new File("rooms/room" + levelNumber + ".txt"));
+		fishNumber = currentRoom.getFishes().size();
+	}
+
+
+	private void finishGame(){
+		int finalSeconds = (int)((System.currentTimeMillis() - startSeconds) / 1000);
+		ScoreManager scman = new ScoreManager();
+		scman.addScore(new Score(finalSeconds, moves));
+		scman.writeHighscores();
+		ImageGUI.getInstance().showMessage("Acabaste o jogo!","Clica OK para ver os Highscores");
+		ImageGUI.getInstance().showMessage("=== TOP 10 ===\n\n",scman.writeList());
+		System.exit(0);
+	}
 }

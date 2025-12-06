@@ -2,6 +2,7 @@ package objects;
 
 import java.util.List;
 
+import objects.mobileObjects.Trap;
 import pt.iscte.poo.game.Room;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
@@ -29,6 +30,15 @@ public class BigFish extends GameCharacter {
 			}
 		}
 		return true;
+	}
+
+	@Override
+    public boolean interact(GameObject object, Direction direction, Room room) {
+        if (object instanceof Trap) {
+            this.kill(room);
+            return true;
+        }
+        return false;
 	}
 
 	public void kill(Room room){

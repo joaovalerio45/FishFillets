@@ -32,19 +32,13 @@ public class Krab extends MobileObject {
 
     @Override
     public boolean interact(GameObject object, Direction direction, Room room) {
-        List<Point2D> adj = getPosition().getNeighbourhoodPoints();
-        for(Point2D p : adj){
-            for(GameObject obj : room.getObjectsAt(p)){
-                if(obj instanceof GameCharacter){
-                    GameCharacter fish = ((GameCharacter)obj);
-                    if(fish instanceof BigFish){
-                        room.removeObject(this);
-                    }
-                    if(fish instanceof SmallFish){
-                        fish.kill(room);
-                    }
-                }
-            }
+        if (object instanceof BigFish) {
+            room.removeObject(this);
+            return true;
+        }
+    
+        if (object instanceof SmallFish) {
+            ((GameCharacter) object).kill(room);
         }
         return false;
     }

@@ -7,13 +7,12 @@ import java.util.List;
 import java.util.Scanner;
 
 import objects.fixedObjects.*;
-import objects.interfaces.Tickable;
 import objects.mobileObjects.*;
 import objects.*;
 import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.utils.Point2D;
 
-public class Room implements Tickable{
+public class Room{
 	
 	private List<GameObject> objects;
 	private List<GameCharacter> fishes;
@@ -199,23 +198,12 @@ public class Room implements Tickable{
 		return r;	
 	}
 
-	@Override
-	public void tickAction(Room room) {
-		// verificar se o nível acabou
-
-		if(true){
-			finishLevel();
-		}
-	}
-
-	private void finishLevel() {
-		
-	}
+	
 	public void checkExits() {
 		List<GameCharacter> fishesCopy = new ArrayList<>(fishes);
         for(GameCharacter fish : fishesCopy){
             Point2D p = fish.getPosition();
-            if(p.getX() == 0 || p.getX() == 9 || p.getY() == 0 || p.getY() == 9) {
+            if(p.getX() == -1 || p.getX() == 10 || p.getY() == -1 || p.getY() == 10) {
                 if(activeFish == fish){
                     switchActiveFish();
                 }
