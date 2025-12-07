@@ -18,10 +18,7 @@ public HoledWall(Point2D p) {
 	//se o objeto for Small vai poder atravessar 
 	@Override
 	public boolean isTraversable(GameObject obj) {
-		if(obj.isSmall()){
-			return true;
-		}
-		return false;
+		return obj.isSmall();
 	}
 	//como o objeto é small, isTraversable vai ser true logo a holedWall vai poder interagir com o objeto e o objeto vai poder atravessá-la
 	@Override
