@@ -40,14 +40,14 @@ public class Buoy extends MobileObject{
 
         if(!objsAbove.isEmpty()){
             for(GameObject obj : objsAbove){
-                if(obj instanceof MobileObject){
+                if(obj instanceof MobileObject && !(obj instanceof Buoy)){
                     move(null, Direction.DOWN, room);
+                    return;
                 }
             }
-        }else{
-            move(null, Direction.UP, room);
         }
 
+        move(null, Direction.UP, room);
 
 	}
 

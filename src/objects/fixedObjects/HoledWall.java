@@ -17,10 +17,7 @@ public HoledWall(Point2D p) {
 
 	@Override
 	public boolean isTraversable(GameObject obj) {
-		if(obj.isSmall()){
-			return true;
-		}
-		return false;
+		return obj.isSmall();
 	}
 
 	@Override
