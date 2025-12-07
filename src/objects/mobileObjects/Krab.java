@@ -1,6 +1,5 @@
 package objects.mobileObjects;
 
-import java.util.List;
 import java.util.Random;
 
 import objects.*;

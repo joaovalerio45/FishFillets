@@ -4,6 +4,8 @@ import objects.interfaces.Interactable;
 import pt.iscte.poo.gui.ImageTile;
 import pt.iscte.poo.utils.Point2D;
 
+
+// Classe base para todo os objetos de jogo
 public abstract class GameObject implements ImageTile, Interactable{
 	
 	private Point2D position;
@@ -31,18 +33,23 @@ public abstract class GameObject implements ImageTile, Interactable{
 		return position;
 	}
 
+
+	// flag para objetos pesados
 	public boolean isHeavy(){
 		return false;
 	}
 
+	// flag para objetos leves
 	public boolean isSmall(){
 		return false;
 	}
 
+	//flag para objetos que sao atravessáveis por um outro objeto(obj)
 	public boolean isTraversable(GameObject obj){
 		return false;
 	}
 
+	//flag para inimigos
 	public boolean isEnemy(){
 		return false;
 	}

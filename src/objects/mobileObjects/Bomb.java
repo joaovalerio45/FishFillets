@@ -32,7 +32,7 @@ public class Bomb extends MobileObject {
 			isFalling = true;
 
 		} else {
-			//se moved for false mas isFalling ainda ta true é porque a bomba ja caiu tudo por isso explode e isFalling atualiza se para false novamente
+			//se moved for false mas isFalling ainda esta true é porque a bomba ja caiu tudo por isso explode e isFalling atualiza se para false novamente
 			if(isFalling){
 			explode(room);
 			}

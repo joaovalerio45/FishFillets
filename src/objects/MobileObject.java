@@ -8,10 +8,6 @@ import pt.iscte.poo.game.Room;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
-//decidir se adicionamos room aos parametros do movable e do interactable para saber se a posicao para a qual o objeto vai esta vazia
-//se adicionarmos o room às duas interfaces tambem vai ser possivel fazer o kill dentro dos peixes(criamos no gameCharacter)
-//e sempre que for preciso matar um dos peixes em alguma das interacoes é so invocar o kill
-
 
 public abstract class MobileObject extends GameObject implements Movable,Tickable{
     
@@ -19,6 +15,9 @@ public abstract class MobileObject extends GameObject implements Movable,Tickabl
 		super(position);
 	}
 
+
+    //comportamento default
+    //se o objeto que interage for um peixe, se poder movê-lo, retorna move(), senão retorna falso
     public boolean interact(GameObject object, Direction direction, Room room){
         if (object instanceof GameCharacter) {
             GameCharacter fish = (GameCharacter) object;
@@ -31,27 +30,37 @@ public abstract class MobileObject extends GameObject implements Movable,Tickabl
         }
     return false;
     }
+
+
     
 	public boolean move(GameCharacter fish, Direction direction, Room room) {
+        //posicao para onde se desloca
         Point2D nextPos = getPosition().plus(direction.asVector());
 
+        //lista de objetos que estão na posição de destino
         List<GameObject> objects = room.getObjectsAt(nextPos);
 
 
         for(GameObject obj : objects){
 
+
+            //se a interação com esse objeto retorna true (pode empurrar), continua a iteração
             if (obj.interact(this, direction, room)) {
                 continue;
             }
 
+            //se o obj pode atravessar retorna true, continua a iteração
             if (obj.isTraversable(this)) {
                 continue;
             }
 
+            //se o objeto nao for movel, cancela o movimento e retorna false
             if(!(obj instanceof MobileObject)){
                 return false;
             }
-            if(fish != null && fish.canPush(room,direction, obj)){
+            //se o movimento for efetuado por um peixe (não é a gravidade) e esse peixe pode empurrar
+            if(fish != null && fish.canPush(room,direction, obj)){ 
+                
                 MobileObject nextMobile = (MobileObject) obj;
                 if(nextMobile.move(fish, direction, room)){
                     this.setPosition(nextPos);

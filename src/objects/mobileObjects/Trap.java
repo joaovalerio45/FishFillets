@@ -21,6 +21,7 @@ public Trap(Point2D p) {
 	}
 
 	//se o objeto que tentar interagir com a trap for big fish ou krab morre
+	//se for smallfish mata
 	public boolean interact(GameObject object, Direction direction, Room room){
 		if(object instanceof BigFish){
 			((GameCharacter) object).kill(room);
