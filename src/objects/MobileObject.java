@@ -60,7 +60,7 @@ public abstract class MobileObject extends GameObject implements Movable,Tickabl
             }
             //se o movimento for efetuado por um peixe (não é a gravidade) e esse peixe pode empurrar
             if(fish != null && fish.canPush(room,direction, obj)){ 
-                
+                //tentamos fazer o move do objeto á frente e se retornar true, mudamos a posicão do objeto
                 MobileObject nextMobile = (MobileObject) obj;
                 if(nextMobile.move(fish, direction, room)){
                     this.setPosition(nextPos);
@@ -84,7 +84,7 @@ public abstract class MobileObject extends GameObject implements Movable,Tickabl
 
 	}
 
-    
+    // método para os objetos móveis (ex. Krab) que efetuam uma ação sempre que um peixe se move
     public void fishMoveAction(Room room) {
 
     }

@@ -30,25 +30,23 @@ public class SmallFish extends GameCharacter {
 	}
 
 	public boolean canPush(Room room, Direction direction, GameObject obj){
+		//nao pode empurrar objetos pesados
 		if(obj.isHeavy()){
 			return false;
 		}
-	
+		
+		//obtem os objetos na posição á frente do objeto que quer empurrar
 		Point2D nextPos = obj.getPosition().plus(direction.asVector());
 		List<GameObject> objectsAtNextPos = room.getObjectsAt(nextPos);
 		
-		// 2. Não pode empurrar para uma posição que contenha outro objeto móvel (viola regra de "um único objeto")
+		//se houver mais do que um objeto, retorna false e nao pode empurrar
 		for(GameObject nextObj : objectsAtNextPos) {
 			if (nextObj instanceof MobileObject) {
 				return false;
 			}
 		}
-		
-		// Permite o empurrão para a posição da HoledWall ou para espaços vazios.
-		// A lógica de travessia (HoledWall) é tratada pelo método move() do Cup.
 		return true;
 	}
-
 
 	public void kill(Room room){
 		if(this.equals(room.getActiveFish())){
@@ -59,9 +57,11 @@ public class SmallFish extends GameCharacter {
 
 	@Override
     public boolean isKilled(List<MobileObject> stack){
+		//se tiver mais do que um objeto suportado morre
         if(stack.size() > 1){
             return true;
         }
+		//se tiver um objeto pesado suportado morre
         for(MobileObject obj : stack){
             if(obj.isHeavy()){
                 return true;

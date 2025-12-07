@@ -10,21 +10,29 @@ import java.util.Scanner;
 
 public class ScoreManager{
 
+    //lista com os recordes
     private List<Score> highscores = new ArrayList<>();
 
+
+    //cria o Score Manager
     public ScoreManager(){
         highscores = new ArrayList<>();
+        //lê os recordes previamente guardados(ver readHighscores())
         readHighscores(new File("scores/highscores.txt"));
     }
 
+    //adiciona um score à lista
     public void addScore(Score s){
         highscores.add(s);
+        // ordena a lista por scores mais altos e deixa só os 10 melhores
         highscores.sort((score1, score2) -> score1.compareTo(score2));
         if (highscores.size() > 10) {
             highscores.subList(10, highscores.size()).clear();
         }
     }
 
+
+    //lê o ficheiro highscores.txt
     public void readHighscores(File f){
         
         if (!f.exists()) {
@@ -38,12 +46,12 @@ public class ScoreManager{
                 sc.nextLine();
             }
 
-            // 2. Ler linha a linha
+            //lê linha a linha
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
-                // A linha tem o formato: "Time: 123seconds Moves: 456"
+                //a linha tem o formato: "Time: 123 seconds Moves: 456"
                 
-                // Usamos um Scanner auxiliar para ler dentro da linha
+                //usamos um Scanner auxiliar para ler dentro da linha
                 Scanner lineScanner = new Scanner(line);
                 
                 if (lineScanner.hasNext()) {
@@ -70,6 +78,8 @@ public class ScoreManager{
         }
     }
 
+
+    //escreve no ficheiro highscores.txt
     public void writeHighscores(){
         try {
             PrintWriter pw = new PrintWriter(new File("scores/highscores.txt"));
