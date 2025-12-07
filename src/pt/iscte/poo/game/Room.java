@@ -39,6 +39,7 @@ public class Room{
 		return fishes;
 	}
 
+	//lista de objetos numa posicao dada
 	public List<GameObject> getObjectsAt(Point2D position) {
 		List<GameObject> gameObj = new ArrayList<>();
 		for(GameObject i : objects){
@@ -94,15 +95,20 @@ public class Room{
 		this.bf = bf;
 		this.fishes.add(bf);
 	}
-
+ 
 	public void switchActiveFish(){
+		
+		//garante que ha pelo menos um peixe
 		if (fishes.isEmpty()){
 			return;
 		}
 
+		//encontra a posicao do peixe que esta ativo 
     	int currentIndex = fishes.indexOf(activeFish);
+		//calcula o indice do proximo peixe
     	int nextIndex = (currentIndex + 1) % fishes.size();
 
+		//define o peixe na posicao calculada como peixe ativo
     	setActiveFish(fishes.get(nextIndex));
 	}
 	
@@ -111,6 +117,7 @@ public class Room{
 		Room r = new Room();
 		r.setName(f.getName());	
 
+		//coloca agua em todas as posicoes do nivel
 		for(int i = 0; i < 10; i++){
 			for(int j = 0; j < 10; j++){
 				r.addObject(new Water(new Point2D(i,j)));
@@ -118,9 +125,11 @@ public class Room{
 		}
 
 		try {
+			//le o ficheiro f 
 			Scanner sc = new Scanner(f);
 			int y = -1;
-	
+			
+			//enquanto o ficheiro tiver uma linha, le todas as letras da linha ate acabar e coloca o objeto correspondente a essa letra no nivel
 			while (sc.hasNextLine()) {
             	String line = sc.nextLine();
 				y++;
@@ -189,10 +198,12 @@ public class Room{
 
 
 			}
+
+			//coloca o primeiro peixe da lista como peixe ativo(vai comecar sempre o peixe grande, pois é o primeiro a ser adicionado à lista de peixes)
 			if (!r.fishes.isEmpty()) {
 				r.setActiveFish(r.fishes.get(0));
 			} else {
-				System.err.println("Warning: no fishes found in room " + f.getName());
+				System.err.println("Nenhum peixe encontrado no nivel: " + f.getName());
 			}
 			sc.close();
 		} catch (FileNotFoundException e) {
@@ -204,13 +215,19 @@ public class Room{
 
 	
 	public void checkExits() {
+
+		//cria uma cópia da lista para evitar bugs
 		List<GameCharacter> fishesCopy = new ArrayList<>(fishes);
+
+		//percorre a lista de peixes, e ve algum deles passou das bordas do nivel
         for(GameCharacter fish : fishesCopy){
             Point2D p = fish.getPosition();
             if(p.getX() == -1 || p.getX() == 10 || p.getY() == -1 || p.getY() == 10) {
+				//se havia dois peixes, muda para o peixe que ainda nao passou das bordas
                 if(activeFish == fish){
                     switchActiveFish();
                 }
+				//remove o peixe da lista de objetos
                 removeObject(fish);
             }
         }
