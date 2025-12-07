@@ -9,6 +9,8 @@ import pt.iscte.poo.utils.Point2D;
 
 public class Bomb extends MobileObject {
 
+	//indica se a bomba esteve em movimento de queda no ultimo tick
+	//usada para diferenciar entre estar a ser empurrada (nao explode) e estar a cair (explode ao parar)
 	private boolean isFalling = false;
 
     public Bomb(Point2D p) {
@@ -19,12 +21,17 @@ public class Bomb extends MobileObject {
 	public String getName() {
 		return "bomb";
 	}
-	public void tickAction(Room room){
-		boolean moved = move(null,Direction.DOWN,room);
 
+	//define o comportamento da bomba a cada tick
+	public void tickAction(Room room){
+		//vai retornar true se a bomba fez um movimento para baixo)
+		boolean moved = move(null,Direction.DOWN,room);
+		//se for true a bomba esta a cair e atualiza se a variavel
 		if(moved){
 			isFalling = true;
+
 		} else {
+			//se moved for false mas isFalling ainda ta true é porque a bomba ja caiu tudo por isso explode e isFalling atualiza se para false novamente
 			if(isFalling){
 			explode(room);
 			}
