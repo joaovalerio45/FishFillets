@@ -189,7 +189,11 @@ public class Room{
 
 
 			}
-			r.setActiveFish(r.fishes.get(0));
+			if (!r.fishes.isEmpty()) {
+				r.setActiveFish(r.fishes.get(0));
+			} else {
+				System.err.println("Warning: no fishes found in room " + f.getName());
+			}
 			sc.close();
 		} catch (FileNotFoundException e) {
 			System.err.println("Ficheiro não Encontrado");
