@@ -20,7 +20,7 @@ public Trap(Point2D p) {
 		return true;
 	}
 
-
+	//se o objeto que tentar interagir com a trap for big fish ou krab morre
 	public boolean interact(GameObject object, Direction direction, Room room){
 		if(object instanceof BigFish){
 			((GameCharacter) object).kill(room);

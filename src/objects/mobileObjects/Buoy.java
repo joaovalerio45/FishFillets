@@ -18,15 +18,16 @@ public class Buoy extends MobileObject{
         return "buoy";
     }
 
+    //
     @Override
     public boolean interact(GameObject object, Direction direction, Room room){
         if (object instanceof GameCharacter) {
             GameCharacter fish = (GameCharacter) object;
-        
+        // proibe o SmallFish de empurrar a boia verticalmente, e da false se o peixe nao a conseguir empurrar
             if (((direction == Direction.UP || direction == Direction.DOWN) && fish instanceof SmallFish) || !fish.canPush(room, direction, this)) {
                 return false;
             }
-        
+        //tenta mover a boia(vai buscar o move do mobile object)
             return this.move(fish, direction, room);
         }
     return false;
@@ -35,9 +36,11 @@ public class Buoy extends MobileObject{
     
     @Override
 	public void tickAction(Room room) {
-
+        //obtem a lista de objetos na posicao acima da boia
         List<GameObject> objsAbove = room.getObjectsAt(getPosition().plus(Direction.UP.asVector()));
 
+        //se a posicao nao estiver vazia, se nessa posicao estiver um objeto movel que nao seja a boia a boia move se para baixo para suportar
+        //o objeto que esta por cima
         if(!objsAbove.isEmpty()){
             for(GameObject obj : objsAbove){
                 if(obj instanceof MobileObject && !(obj instanceof Buoy)){
@@ -46,7 +49,7 @@ public class Buoy extends MobileObject{
                 }
             }
         }
-
+        //se nao houver objetos em cima, a boia flutua(vai para cima)
         move(null, Direction.UP, room);
 
 	}

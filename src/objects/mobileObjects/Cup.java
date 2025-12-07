@@ -15,6 +15,7 @@ public class Cup extends MobileObject {
 		return "cup";
 	}
 
+	//pode passar na holed wall
 	@Override
 	public boolean isSmall(){
 		return true;

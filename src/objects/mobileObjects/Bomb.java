@@ -23,6 +23,7 @@ public class Bomb extends MobileObject {
 	}
 
 	//define o comportamento da bomba a cada tick
+	@Override
 	public void tickAction(Room room){
 		//vai retornar true se a bomba fez um movimento para baixo)
 		boolean moved = move(null,Direction.DOWN,room);
@@ -40,21 +41,26 @@ public class Bomb extends MobileObject {
 	}
 			
 	private void explode(Room room) {
+		//obtem as 4 posicoes adjacentes à bomba(funcao getNeighbourhoodPoints ja implementada na classe Point2D)
 		List<Point2D> area = getPosition().getNeighbourhoodPoints();
 
 		for(Point2D p : area){
+			//lista de objetos em cada 1 dessas posicoes
 			List<GameObject> objects = room.getObjectsAt(p);
-
+			//remove objetos em ordem inversa para evitar problemas de indice
 				for(int i = objects.size() - 1; i >= 0; i--){
 					GameObject obj = objects.get(i);
 					if(obj instanceof GameCharacter){
+						//mata o peixe se estiver numa das posicoes
 						((GameCharacter) obj).kill(room);
 					}
 					else {
+						//remove os outros objetos que estao nessas posicoes
 						room.removeObject(obj);
 					}
 				}
 			}
+			//por fim remove a propria bomba
 		room.removeObject(this);
 		}
 

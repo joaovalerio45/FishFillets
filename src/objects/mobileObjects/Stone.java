@@ -27,6 +27,7 @@ public class Stone extends MobileObject {
 		return true;
 	}
 
+	
 	@Override
 	public boolean move(GameCharacter fish, Direction direction, Room room) {
         Point2D nextPos = getPosition().plus(direction.asVector());
