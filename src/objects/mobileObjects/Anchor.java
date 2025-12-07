@@ -6,7 +6,8 @@ import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
 public class Anchor extends MobileObject{
-
+	
+	//variavel que vai verificar se a ancora ja se moveu uma vez
 	boolean hasMovedOnce;
 
     public Anchor(Point2D p) {
@@ -24,16 +25,6 @@ public class Anchor extends MobileObject{
 	public String getName() {
 		return "anchor";
 	}
-
-
-	@Override
-	public boolean interact(GameObject object, Direction direction, Room room) {
-		if (object instanceof BigFish) {
-            return move((GameCharacter) object, direction, room);
-        }
-        return false;
-	}
-
 
 	@Override
 	public boolean move(GameCharacter fish, Direction direction, Room room) {

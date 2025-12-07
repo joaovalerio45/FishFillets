@@ -16,7 +16,7 @@ public Trunk(Point2D p) {
 	}
 
 
-
+	//se a direçao do objeto que vai interagir com o tronco for para baixo e se for um objeto pesado o tronco vai ser removido
 	@Override
 	public boolean interact(GameObject object, Direction direction, Room room) {
 		if(direction.equals(Direction.DOWN) && object.isHeavy()){
