@@ -199,7 +199,7 @@ public class Room{
 
 			}
 
-			//coloca o primeiro peixe da lista como peixe ativo(vai comecar sempre o peixe grande, pois é o primeiro a ser adicionado à lista de peixes)
+			//coloca o primeiro peixe da lista como peixe ativo
 			if (!r.fishes.isEmpty()) {
 				r.setActiveFish(r.fishes.get(0));
 			} else {
