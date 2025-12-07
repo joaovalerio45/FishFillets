@@ -1,4 +1,5 @@
 Highscores: 
 Time: 56 seconds Moves: 146
+Time: 58 seconds Moves: 140
 Time: 68 seconds Moves: 142
 Time: 81 seconds Moves: 196
